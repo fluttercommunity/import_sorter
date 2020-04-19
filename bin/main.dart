@@ -22,4 +22,13 @@ void main() {
 
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles();
+
+  for (final filePath in dartFiles.keys) {
+    File(filePath).writeAsStringSync(sort.sortImports(
+      dartFiles[filePath],
+      packageName,
+      dependencies,
+    ));
+    print('✅ Formatted ${filePath.replaceAll(Directory.current.path, '')}');
+  }
 }
