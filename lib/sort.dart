@@ -102,5 +102,7 @@ String sortImports(
     }
   }
 
+  sortedLines.add('');
+
   return sortedLines.join('\n');
 }

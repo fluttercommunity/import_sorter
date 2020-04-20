@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Resolve dart lint issues
+
 ## 1.0.1
 
 - Remove double call to sort

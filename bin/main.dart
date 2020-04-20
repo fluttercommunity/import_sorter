@@ -1,9 +1,11 @@
 // Dart imports:
 import 'dart:io';
 
+// Package imports:
+import 'package:yaml/yaml.dart';
+
 // Project imports:
 import 'package:import_sorter/files.dart' as files;
-import 'package:import_sorter/pubspec.dart' as pubspec;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main() async {
@@ -12,7 +14,9 @@ void main() async {
   Package name is one factor used to identify project imports
   Dependencies/dev-dependency names are used to identify package imports
   */
-  final pubspecContents = pubspec.read();
+  final file = File('${Directory.current.path}/pubspec.yaml');
+  final pubspecContents = loadYaml(file.readAsStringSync());
+
   final packageName = pubspecContents['name'];
   final dependencies = [];
   if (pubspecContents.containsKey('dependencies')) {
