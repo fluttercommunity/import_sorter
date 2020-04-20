@@ -1,14 +1,11 @@
 // Dart imports:
 import 'dart:io';
 
-// Package imports:
-import 'package:process_run/process_run.dart';
-import 'package:process_run/which.dart';
-
 // Project imports:
 import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/pubspec.dart' as pubspec;
 import 'package:import_sorter/sort.dart' as sort;
+
 
 void main() async {
   /*
@@ -29,19 +26,17 @@ void main() async {
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles();
 
-  final useDartFmt = whichSync('dartfmt') is String;
-
   for (final filePath in dartFiles.keys) {
+    sort.sortImports(
+      dartFiles[filePath],
+      packageName,
+      dependencies,
+    );
     File(filePath).writeAsStringSync(sort.sortImports(
       dartFiles[filePath],
       packageName,
       dependencies,
     ));
-    if (useDartFmt) {
-      await run('dartfmt', ['-w', filePath]);
-    } else {
-      await run('flutter', ['format', filePath]);
-    }
     print('✅ Formatted ${filePath.replaceAll(Directory.current.path, '')}');
   }
 }
