@@ -24,11 +24,6 @@ void main() async {
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles();
   for (final filePath in dartFiles.keys) {
-    sort.sortImports(
-      dartFiles[filePath],
-      packageName,
-      dependencies,
-    );
     File(filePath).writeAsStringSync(sort.sortImports(
       dartFiles[filePath],
       packageName,

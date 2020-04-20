@@ -1,6 +1,6 @@
 name: import_sorter
 description: Automatically sort all your flutter and dart imports
-version: 1.0.0
+version: 1.0.1
 homepage: 'https://github.com/Matt-Gleich/import_sorter'
 maintainer: Matthew Gleich (Matt-Gleich)
 
