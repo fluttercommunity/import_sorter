@@ -1,5 +1,4 @@
 /// Sort the imports
-
 String sortImports(
   List<String> lines,
   String package_name,
@@ -13,37 +12,45 @@ String sortImports(
   final packageImports = <String>[];
   final projectImports = <String>[];
 
-  for (final line in lines) {
+  for (int i = 0; i < lines.length; i++) {
     // If line is an import line
-    if (line.startsWith('import ') && line.endsWith('.dart;')) {
-      if (line.contains('dart:')) {
-        dartImports.add(line);
-      } else if (line.contains('package:flutter/')) {
-        flutterImports.add(line);
-      } else if (line.contains('package:$package_name') ||
-          !line.contains('package:')) {
-        projectImports.add(line);
+    if (lines[i].startsWith('import ') && lines[i].endsWith(';')) {
+      if (lines[i].contains('dart:')) {
+        dartImports.add(lines[i]);
+      } else if (lines[i].contains('package:flutter/')) {
+        flutterImports.add(lines[i]);
+      } else if (lines[i].contains('package:$package_name') ||
+          !lines[i].contains('package:')) {
+        projectImports.add(lines[i]);
       }
       for (final dependency in dependencies) {
-        if (line.contains('package:$dependency')) {
-          packageImports.add(line);
+        if (lines[i].contains('package:$dependency')) {
+          packageImports.add(lines[i]);
         }
       }
-    } else if (beforeImportLines.isEmpty) {
-      beforeImportLines.add(line);
+    } else if (i != lines.length &&
+        lines[i].contains('//') &&
+        (lines[i + 1].startsWith('import ') && lines[i + 1].endsWith(';'))) {
+    } else if (dartImports.isEmpty &&
+        flutterImports.isEmpty &&
+        packageImports.isEmpty &&
+        projectImports.isEmpty) {
+      beforeImportLines.add(lines[i]);
     } else {
-      afterImportLines.add(line);
+      afterImportLines.add(lines[i]);
     }
   }
 
   final sortedLines = <String>[...beforeImportLines];
-  final imports = dartImports.isNotEmpty &&
-      flutterImports.isNotEmpty &&
-      packageImports.isNotEmpty &&
-      projectImports.isNotEmpty;
+  final imports = [
+    dartImports.isNotEmpty,
+    flutterImports.isNotEmpty,
+    packageImports.isNotEmpty,
+    projectImports.isNotEmpty,
+  ];
 
   // Adding content conditionally
-  if (imports) {
+  if (beforeImportLines.isNotEmpty) {
     sortedLines.add('');
   }
   if (dartImports.isNotEmpty) {
@@ -51,21 +58,31 @@ String sortImports(
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
-    sortedLines.add('// Flutter imports');
+    sortedLines.add('\n// Flutter imports');
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
-    sortedLines.add('// Package imports:');
+    sortedLines.add('\n// Package imports:');
     sortedLines.addAll(packageImports);
   }
-  if (afterImportLines.isNotEmpty) {
-    sortedLines.add('// Project imports:');
+  if (projectImports.isNotEmpty) {
+    sortedLines.add('\n// Project imports:');
     sortedLines.addAll(projectImports);
   }
-  if (imports) {
-    sortedLines.add('');
+
+  var foundCode = false;
+  for (int j = 0; j < afterImportLines.length; j++) {
+    if (afterImportLines[j] != '') {
+      foundCode = true;
+    }
+    if (!foundCode && afterImportLines[j] == '') {
+      afterImportLines.removeAt(j);
+    }
   }
+
+  sortedLines.add('');
   sortedLines.addAll(afterImportLines);
 
   return sortedLines.join('\n');
 }
+
