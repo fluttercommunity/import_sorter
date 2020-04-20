@@ -3,7 +3,6 @@ description: Automatically sort all your flutter and dart imports
 version: 1.0.0
 homepage: 'https://github.com/Matt-Gleich/import_sorter'
 maintainer: Matthew Gleich (Matt-Gleich)
-author: Matthew Gleich (Matt-Gleich)
 
 environment:
   sdk: '>=2.7.0 <3.0.0'
