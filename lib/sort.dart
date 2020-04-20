@@ -24,13 +24,15 @@ String sortImports(
         projectImports.add(lines[i]);
       }
       for (final dependency in dependencies) {
-        if (lines[i].contains('package:$dependency')) {
+        if (lines[i].contains('package:$dependency') &&
+            dependency != 'flutter') {
           packageImports.add(lines[i]);
         }
       }
     } else if (i != lines.length &&
         lines[i].contains('//') &&
-        (lines[i + 1].startsWith('import ') && lines[i + 1].endsWith(';'))) {
+        lines[i + 1].startsWith('import ') &&
+        lines[i + 1].endsWith(';')) {
     } else if (dartImports.isEmpty &&
         flutterImports.isEmpty &&
         packageImports.isEmpty &&
@@ -41,13 +43,16 @@ String sortImports(
     }
   }
 
+  if (dartImports.isEmpty &&
+      flutterImports.isEmpty &&
+      packageImports.isEmpty &&
+      projectImports.isEmpty) {
+    return beforeImportLines.join('\n');
+  }
+
+  beforeImportLines.removeWhere((line) => line != '');
+
   final sortedLines = <String>[...beforeImportLines];
-  final imports = [
-    dartImports.isNotEmpty,
-    flutterImports.isNotEmpty,
-    packageImports.isNotEmpty,
-    projectImports.isNotEmpty,
-  ];
 
   // Adding content conditionally
   if (beforeImportLines.isNotEmpty) {
@@ -58,31 +63,44 @@ String sortImports(
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
-    sortedLines.add('\n// Flutter imports');
+    if (dartImports.isNotEmpty) {
+      sortedLines.add('');
+    }
+    sortedLines.add('// Flutter imports:');
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
-    sortedLines.add('\n// Package imports:');
+    if (flutterImports.isNotEmpty ||
+        (flutterImports.isEmpty && dartImports.isNotEmpty)) {
+      sortedLines.add('');
+    }
+    sortedLines.add('// Package imports:');
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
-    sortedLines.add('\n// Project imports:');
+    if (packageImports.isNotEmpty ||
+        ((packageImports.isEmpty && flutterImports.isEmpty) &&
+            dartImports.isNotEmpty) ||
+        ((dartImports.isEmpty && packageImports.isEmpty) &&
+            flutterImports.isNotEmpty)) {
+      sortedLines.add('');
+    }
+    sortedLines.add('// Project imports:');
     sortedLines.addAll(projectImports);
   }
 
-  var foundCode = false;
+  sortedLines.add('');
+
+  var addedCode = false;
   for (int j = 0; j < afterImportLines.length; j++) {
     if (afterImportLines[j] != '') {
-      foundCode = true;
+      sortedLines.add(afterImportLines[j]);
+      addedCode = true;
     }
-    if (!foundCode && afterImportLines[j] == '') {
-      afterImportLines.removeAt(j);
+    if (addedCode && afterImportLines[j] == '') {
+      sortedLines.add(afterImportLines[j]);
     }
   }
 
-  sortedLines.add('');
-  sortedLines.addAll(afterImportLines);
-
   return sortedLines.join('\n');
 }
-

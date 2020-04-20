@@ -6,7 +6,6 @@ import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/pubspec.dart' as pubspec;
 import 'package:import_sorter/sort.dart' as sort;
 
-
 void main() async {
   /*
   Getting the package name and dependencies/dev-dependencies
@@ -22,10 +21,8 @@ void main() async {
   if (pubspecContents.containsKey('dev-dependencies')) {
     dependencies.addAll(pubspecContents['dev-dependencies'].keys);
   }
-
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles();
-
   for (final filePath in dartFiles.keys) {
     sort.sortImports(
       dartFiles[filePath],
