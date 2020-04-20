@@ -1,6 +1,6 @@
 # import_sorter
 
-📱 Dart package that automatically sort all your flutter and dart imports. Flutter and regular dart applications supported. Sorts imports and reorders them based off the following format:
+📱 Dart package that automatically sorts all your flutter and dart imports. Flutter and regular dart applications supported! Sorts imports and reorders them based off the following format:
 
 1. Dart imports
 2. Flutter imports
@@ -21,11 +21,19 @@ import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
 import 'anotherFile.dart';
 import 'package:example_app/anotherFile2.dart';
+import 'dart:async';
+import 'dart:io';
+import 'dart:js';
 ```
 
 ### After
 
 ```dart
+// Dart imports:
+import 'dart:async';
+import 'dart:io';
+import 'dart:js';
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
