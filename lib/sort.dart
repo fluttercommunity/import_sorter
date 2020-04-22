@@ -47,7 +47,7 @@ String sortImports(
       flutterImports.isEmpty &&
       packageImports.isEmpty &&
       projectImports.isEmpty) {
-    return beforeImportLines.join('\n');
+    return beforeImportLines.join('\n') + '\n';
   }
 
   beforeImportLines.removeWhere((line) => line != '');
