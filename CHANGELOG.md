@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Fix spacing of import blocks
+
 ## 1.0.3
 
 - Fix dev dependency problem
