@@ -70,19 +70,16 @@ String sortImports(
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
-    if (flutterImports.isNotEmpty ||
-        (flutterImports.isEmpty && dartImports.isNotEmpty)) {
+    if (dartImports.isNotEmpty || flutterImports.isNotEmpty) {
       sortedLines.add('');
     }
     sortedLines.add('// Package imports:');
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
-    if (packageImports.isNotEmpty ||
-        ((packageImports.isEmpty && flutterImports.isEmpty) &&
-            dartImports.isNotEmpty) ||
-        ((dartImports.isEmpty && packageImports.isEmpty) &&
-            flutterImports.isNotEmpty)) {
+    if (dartImports.isNotEmpty ||
+        flutterImports.isNotEmpty ||
+        packageImports.isNotEmpty) {
       sortedLines.add('');
     }
     sortedLines.add('// Project imports:');
