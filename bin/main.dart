@@ -8,7 +8,7 @@ import 'package:yaml/yaml.dart';
 import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
-void main() async {
+void main() {
   /*
   Getting the package name and dependencies/dev-dependencies
   Package name is one factor used to identify project imports
@@ -22,8 +22,8 @@ void main() async {
   if (pubspecContents.containsKey('dependencies')) {
     dependencies.addAll(pubspecContents['dependencies'].keys);
   }
-  if (pubspecContents.containsKey('dev-dependencies')) {
-    dependencies.addAll(pubspecContents['dev-dependencies'].keys);
+  if (pubspecContents.containsKey('dev_dependencies')) {
+    dependencies.addAll(pubspecContents['dev_dependencies'].keys);
   }
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles();

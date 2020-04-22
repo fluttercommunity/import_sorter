@@ -1,3 +1,8 @@
+## 1.0.3
+
+- Fix dev dependency problem
+- Add new line to end of file even if there are no imports
+
 ## 1.0.2
 
 - Resolve dart lint issues
