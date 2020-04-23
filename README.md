@@ -52,11 +52,11 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^1.0.4` to your `dev-dependencies`
+Simply add `import_sorter: ^1.0.4` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 
-Once you've installed it simply run `flutter pub run import_sorter:main` to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't exist.
+Once you've installed it simply run `flutter pub run import_sorter:main` (`pub run import_sorter:main` if normal dart application) to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't exist.
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 
