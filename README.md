@@ -52,7 +52,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^1.0.5` to your `dev_dependencies`
+Simply add `import_sorter: ^1.0.6` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 
@@ -60,7 +60,7 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 
 ## ✨ Features
 
-* Add the `-e` flag to the run command and have emojis added to your imports 😄
+- Add the `-e` flag to the run command and have emojis added to your imports 😄
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 

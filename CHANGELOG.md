@@ -1,3 +1,7 @@
+## 1.0.6
+
+- Ignore /lib/generated_plugin_registrant.dart for flutter projects
+
 ## 1.0.5
 
 - Update documentation

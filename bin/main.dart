@@ -29,6 +29,12 @@ void main(List<String> args) {
 
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles();
+  if (dependencies.contains('flutter') &&
+      dartFiles.containsKey(
+          '${Directory.current.path}/lib/generated_plugin_registrant.dart')) {
+    dartFiles.remove(
+        '${Directory.current.path}/lib/generated_plugin_registrant.dart');
+  }
 
   final emojis = args.contains('-e');
   for (final filePath in dartFiles.keys) {
