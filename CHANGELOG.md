@@ -1,3 +1,7 @@
+## 1.0.9
+
+- Resolve issue #3 with commented out files
+
 ## 1.0.8
 
 - Resolve issue #2 with transitive dependencies
