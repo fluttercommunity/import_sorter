@@ -30,7 +30,7 @@ String sortImports(
           packageImports.add(lines[i]);
         }
       }
-    } else if (i != lines.length &&
+    } else if (i != lines.length - 1 &&
         lines[i].contains('//') &&
         lines[i + 1].startsWith('import ') &&
         lines[i + 1].endsWith(';')) {
