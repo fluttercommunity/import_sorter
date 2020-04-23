@@ -1,5 +1,7 @@
 # import_sorter ![Pub Version](https://img.shields.io/pub/v/import_sorter)
 
+[![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
+
 📱 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following format:
 
 1. Dart imports
@@ -52,7 +54,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^1.0.9` to your `dev_dependencies`
+Simply add `import_sorter: ^1.0.10` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 

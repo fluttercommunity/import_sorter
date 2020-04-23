@@ -1,3 +1,7 @@
+## 1.0.10
+
+- Moved package to Flutter Community
+
 ## 1.0.9
 
 - Resolve issue #3 with commented out files
