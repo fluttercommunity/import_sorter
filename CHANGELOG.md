@@ -1,3 +1,7 @@
+## 1.0.8
+
+- Resolve issue #2 with transitive dependencies
+
 ## 1.0.7
 
 - Fix duplicate imports when contain same package name

@@ -29,7 +29,7 @@ void main(List<String> args) async {
     } else {
       print('🏃‍♂️ Running: pub get');
       await run('pub', ['get']);
-      print('\t✅ Ran flutter pub get\n');
+      print('\t✅ Ran pub get\n');
     }
   }
   final pubspecLockFile = File('${Directory.current.path}/pubspec.lock');
