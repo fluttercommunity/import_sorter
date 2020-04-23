@@ -1,3 +1,8 @@
+## 1.0.5
+
+- Update documentation
+- Add emoji flag
+
 ## 1.0.4
 
 - Fix spacing of import blocks

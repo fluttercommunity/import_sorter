@@ -3,6 +3,7 @@ String sortImports(
   List<String> lines,
   String package_name,
   List dependencies,
+  bool emojis,
 ) {
   final beforeImportLines = <String>[];
   final afterImportLines = <String>[];
@@ -59,21 +60,21 @@ String sortImports(
     sortedLines.add('');
   }
   if (dartImports.isNotEmpty) {
-    sortedLines.add('// Dart imports:');
+    sortedLines.add('//${emojis ? ' 🎯 ' : ' '}Dart imports:');
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
     if (dartImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add('// Flutter imports:');
+    sortedLines.add('//${emojis ? ' 📱 ' : ' '}Flutter imports:');
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
     if (dartImports.isNotEmpty || flutterImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add('// Package imports:');
+    sortedLines.add('//${emojis ? ' 📦 ' : ' '}Package imports:');
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
@@ -82,7 +83,7 @@ String sortImports(
         packageImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add('// Project imports:');
+    sortedLines.add('//${emojis ? ' 🌎 ' : ' '}Project imports:');
     sortedLines.addAll(projectImports);
   }
 
