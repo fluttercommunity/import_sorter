@@ -20,12 +20,12 @@ String sortImports(
         dartImports.add(lines[i]);
       } else if (lines[i].contains('package:flutter/')) {
         flutterImports.add(lines[i]);
-      } else if (lines[i].contains('package:$package_name') ||
+      } else if (lines[i].contains('package:$package_name/') ||
           !lines[i].contains('package:')) {
         projectImports.add(lines[i]);
       }
       for (final dependency in dependencies) {
-        if (lines[i].contains('package:$dependency') &&
+        if (lines[i].contains('package:$dependency/') &&
             dependency != 'flutter') {
           packageImports.add(lines[i]);
         }

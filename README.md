@@ -52,7 +52,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^1.0.6` to your `dev_dependencies`
+Simply add `import_sorter: ^1.0.7` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 

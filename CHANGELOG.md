@@ -1,3 +1,7 @@
+## 1.0.7
+
+- Fix duplicate imports when contain same package name
+
 ## 1.0.6
 
 - Ignore /lib/generated_plugin_registrant.dart for flutter projects
