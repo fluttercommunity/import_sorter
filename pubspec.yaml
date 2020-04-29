@@ -13,3 +13,6 @@ environment:
 dependencies:
   yaml: ^2.2.0
   process_run: ^0.10.8
+
+import_sorter:
+  emojis: true
