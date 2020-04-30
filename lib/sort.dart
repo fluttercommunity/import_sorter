@@ -47,42 +47,33 @@ String sortImports(
   if (dartImports.isEmpty &&
       flutterImports.isEmpty &&
       packageImports.isEmpty &&
-      projectImports.isEmpty) {
-    return beforeImportLines.join('\n') + '\n';
-  }
+      projectImports.isEmpty) return beforeImportLines.join('\n') + '\n';
 
   beforeImportLines.removeWhere((line) => line != '');
 
   final sortedLines = <String>[...beforeImportLines];
 
   // Adding content conditionally
-  if (beforeImportLines.isNotEmpty) {
-    sortedLines.add('');
-  }
+  if (beforeImportLines.isNotEmpty) sortedLines.add('');
   if (dartImports.isNotEmpty) {
     sortedLines.add('//${emojis ? ' 🎯 ' : ' '}Dart imports:');
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
-    if (dartImports.isNotEmpty) {
-      sortedLines.add('');
-    }
+    if (dartImports.isNotEmpty) sortedLines.add('');
     sortedLines.add('//${emojis ? ' 📱 ' : ' '}Flutter imports:');
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
-    if (dartImports.isNotEmpty || flutterImports.isNotEmpty) {
+    if (dartImports.isNotEmpty || flutterImports.isNotEmpty)
       sortedLines.add('');
-    }
     sortedLines.add('//${emojis ? ' 📦 ' : ' '}Package imports:');
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
     if (dartImports.isNotEmpty ||
         flutterImports.isNotEmpty ||
-        packageImports.isNotEmpty) {
-      sortedLines.add('');
-    }
+        packageImports.isNotEmpty) sortedLines.add('');
     sortedLines.add('//${emojis ? ' 🌎 ' : ' '}Project imports:');
     sortedLines.addAll(projectImports);
   }
@@ -95,9 +86,8 @@ String sortImports(
       sortedLines.add(afterImportLines[j]);
       addedCode = true;
     }
-    if (addedCode && afterImportLines[j] == '') {
+    if (addedCode && afterImportLines[j] == '')
       sortedLines.add(afterImportLines[j]);
-    }
   }
 
   sortedLines.add('');

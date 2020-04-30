@@ -10,12 +10,13 @@ import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main(List<String> args) async {
+  final currentPath = Directory.current.path;
   /*
   Getting the package name and dependencies/dev_dependencies
   Package name is one factor used to identify project imports
-  Dependencies/dev_dependency names are used to identify package imports
+  Dependencies/dev_dependencies names are used to identify package imports
   */
-  final pubspecYamlFile = File('${Directory.current.path}/pubspec.yaml');
+  final pubspecYamlFile = File('${currentPath}/pubspec.yaml');
   final pubspecYaml = loadYaml(pubspecYamlFile.readAsStringSync());
 
   // Getting all dependencies and package name
@@ -32,7 +33,7 @@ void main(List<String> args) async {
       print('\t✅ Ran pub get\n');
     }
   }
-  final pubspecLockFile = File('${Directory.current.path}/pubspec.lock');
+  final pubspecLockFile = File('${currentPath}/pubspec.lock');
   final pubspecLock = loadYaml(pubspecLockFile.readAsStringSync());
   dependencies.addAll(pubspecLock['packages'].keys);
 
@@ -53,13 +54,11 @@ void main(List<String> args) async {
   if (!emojis) emojis = args.contains('-e');
 
   // Getting all the dart files for the project
-  final dartFiles = files.dartFiles();
-  final currentPath = Directory.current.path;
+  final dartFiles = files.dartFiles(currentPath);
   if (dependencies.contains('flutter') &&
-      dartFiles.containsKey(
-          '${Directory.current.path}/lib/generated_plugin_registrant.dart'))
-    dartFiles.remove(
-        '${Directory.current.path}/lib/generated_plugin_registrant.dart');
+      dartFiles
+          .containsKey('${currentPath}/lib/generated_plugin_registrant.dart'))
+    dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
   for (final file in ignored_files) {
     dartFiles.remove('$currentPath$file');
   }
@@ -72,6 +71,6 @@ void main(List<String> args) async {
       dependencies,
       emojis,
     ));
-    print('✅ Formatted ${filePath.replaceAll(Directory.current.path, '')}');
+    print('✅ Formatted ${filePath.replaceAll(currentPath, '')}');
   }
 }
