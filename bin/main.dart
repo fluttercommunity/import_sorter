@@ -10,6 +10,9 @@ import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main(List<String> args) async {
+  final stopwatch = Stopwatch();
+  stopwatch.start();
+
   final currentPath = Directory.current.path;
   /*
   Getting the package name and dependencies/dev_dependencies
@@ -24,13 +27,13 @@ void main(List<String> args) async {
   final dependencies = [];
   if (pubspecYaml.containsKey('dependencies')) {
     if (pubspecYaml['dependencies'].keys.contains('flutter')) {
-      print('🏃‍♂️ Running: flutter pub get');
+      print('┏━━🏃‍♂️ Running: flutter pub get');
       await run('flutter', ['pub', 'get']);
-      print('\t✅ Ran flutter pub get\n');
+      print('┃  ┗━━✅ Ran flutter pub get\n┃  ');
     } else {
-      print('🏃‍♂️ Running: pub get');
+      print('┏━━🏃‍♂️ Running: pub get');
       await run('pub', ['get']);
-      print('\t✅ Ran pub get\n');
+      print('┃  ┗━━✅ Ran pub get\n┃  ');
     }
   }
   final pubspecLockFile = File('${currentPath}/pubspec.lock');
@@ -63,14 +66,22 @@ void main(List<String> args) async {
     dartFiles.remove('$currentPath$file');
   }
 
+  print('┣━━🏭 Sorting Files');
+
   // Sorting and writing to files
-  for (final filePath in dartFiles.keys) {
+  int filesFormatted = 0;
+  for (final String filePath in dartFiles.keys) {
     File(filePath).writeAsStringSync(sort.sortImports(
       dartFiles[filePath],
       packageName,
       dependencies,
       emojis,
     ));
-    print('✅ Formatted ${filePath.replaceAll(currentPath, '')}');
+    filesFormatted++;
+    print(
+        '┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅ Formatted ${filePath.replaceAll(currentPath, '')}');
   }
+  stopwatch.stop();
+  print(
+      '┃  \n┗━━😄 Formatted $filesFormatted files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds');
 }
