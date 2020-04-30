@@ -1,20 +1,20 @@
-// Dart imports:
+// 🎯 Dart imports:
 import 'dart:async';
 import 'dart:io';
 import 'dart:js';
 
-// Flutter imports:
+// 📱 Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/physics.dart';
 import 'package:flutter/painting.dart';
 
-// Package imports:
+// 📦 Package imports:
 import 'package:intl/intl.dart';
 import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
 
-// Project imports:
+// 🌎 Project imports:
 import 'anotherFile.dart';
 import 'package:example_app/anotherFile2.dart';
 

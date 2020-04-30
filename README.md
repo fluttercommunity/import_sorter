@@ -54,15 +54,29 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^1.0.10` to your `dev_dependencies`
+Simply add `import_sorter: ^2.0.0` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 
 Once you've installed it simply run `flutter pub run import_sorter:main` (`pub run import_sorter:main` if normal dart application) to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't exist.
 
-## ✨ Features
+## 💻 Command Line
 
 - Add the `-e` flag to the run command and have emojis added to your imports 😄
+- If your using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`
+
+## 🏗️ Config
+
+If you use import_sorter a lot or need to ignore certain files you should really look at using the config you put in your `pubspec.yaml`. Below is an example config:
+
+```yaml
+import_sorter:
+  emojis: false  # Optional
+  ignored_files:  # Optional
+    - /lib/main.dart
+```
+
+If you need another example check the example app [Example app](example/example_app/pubspec.yaml)
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 

@@ -1,3 +1,10 @@
+## 2.0.0
+
+- Add `pubspec.yaml` config option
+- Improve terminal output
+- Clean up code
+- Add ignore_files file options in config
+
 ## 1.0.10
 
 - Moved package to Flutter Community
