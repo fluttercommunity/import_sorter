@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Resolve minor linting issues
+
 ## 2.0.0
 
 - Add `pubspec.yaml` config option
