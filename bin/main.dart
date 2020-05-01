@@ -48,8 +48,9 @@ void main(List<String> args) async {
     if (pubspecYaml.containsKey('import_sorter')) {
       final config = pubspecYaml['import_sorter'];
       if (config.containsKey('emojis')) emojis = config['emojis'];
-      if (config.containsKey('ignored_files'))
+      if (config.containsKey('ignored_files')) {
         ignored_files.addAll(config['ignored_files']);
+      }
     }
   }
 
@@ -60,8 +61,9 @@ void main(List<String> args) async {
   final dartFiles = files.dartFiles(currentPath);
   if (dependencies.contains('flutter') &&
       dartFiles
-          .containsKey('${currentPath}/lib/generated_plugin_registrant.dart'))
+          .containsKey('${currentPath}/lib/generated_plugin_registrant.dart')) {
     dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
+  }
   for (final file in ignored_files) {
     dartFiles.remove('$currentPath$file');
   }
