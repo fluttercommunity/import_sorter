@@ -2,6 +2,8 @@
 
 [![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
 
+![Analyzer](https://github.com/fluttercommunity/import_sorter/workflows/Analyzer/badge.svg)
+
 📱 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following format:
 
 1. Dart imports
