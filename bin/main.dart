@@ -3,13 +3,12 @@ import 'dart:io';
 
 // 📦 Package imports:
 import 'package:yaml/yaml.dart';
-import 'package:process_run/process_run.dart';
 
 // 🌎 Project imports:
 import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
-void main(List<String> args) async {
+void main(List<String> args) {
   final currentPath = Directory.current.path;
   /*
   Getting the package name and dependencies/dev_dependencies
@@ -24,12 +23,12 @@ void main(List<String> args) async {
   final dependencies = [];
   if (pubspecYaml.containsKey('dependencies')) {
     if (pubspecYaml['dependencies'].keys.contains('flutter')) {
-      print('┏━━🏃‍♂️ Running: flutter pub get');
-      await run('flutter', ['pub', 'get']);
+      print('┏━━🏃‍ Running: flutter pub get');
+      Process.runSync('flutter', ['pub', 'get'], runInShell: true);
       print('┃  ┗━━✅ Ran flutter pub get\n┃  ');
     } else {
-      print('┏━━🏃‍♂️ Running: pub get');
-      await run('pub', ['get']);
+      print('┏━━🏃‍ Running: pub get');
+      Process.runSync('pub', ['get'], runInShell: true);
       print('┃  ┗━━✅ Ran pub get\n┃  ');
     }
   }
