@@ -23,11 +23,11 @@ void main(List<String> args) {
   final dependencies = [];
   if (pubspecYaml.containsKey('dependencies')) {
     if (pubspecYaml['dependencies'].keys.contains('flutter')) {
-      print('┏━━🏃‍♂️ Running: flutter pub get');
+      print('┏━━🏃‍ Running: flutter pub get');
       Process.runSync('flutter', ['pub', 'get'], runInShell: true);
       print('┃  ┗━━✅ Ran flutter pub get\n┃  ');
     } else {
-      print('┏━━🏃‍♂️ Running: pub get');
+      print('┏━━🏃‍ Running: pub get');
       Process.runSync('pub', ['get'], runInShell: true);
       print('┃  ┗━━✅ Ran pub get\n┃  ');
     }
