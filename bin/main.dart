@@ -10,9 +10,6 @@ import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main(List<String> args) async {
-  final stopwatch = Stopwatch();
-  stopwatch.start();
-
   final currentPath = Directory.current.path;
   /*
   Getting the package name and dependencies/dev_dependencies
@@ -36,6 +33,10 @@ void main(List<String> args) async {
       print('┃  ┗━━✅ Ran pub get\n┃  ');
     }
   }
+
+  final stopwatch = Stopwatch();
+  stopwatch.start();
+
   final pubspecLockFile = File('${currentPath}/pubspec.lock');
   final pubspecLock = loadYaml(pubspecLockFile.readAsStringSync());
   dependencies.addAll(pubspecLock['packages'].keys);
