@@ -1,3 +1,8 @@
+## 2.0.2
+
+- Drop process_run dependant
+- Change run emoji
+
 ## 2.0.1
 
 - Resolve minor linting issues
