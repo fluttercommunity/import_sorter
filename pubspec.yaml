@@ -19,3 +19,5 @@ dev_dependencies:
 
 import_sorter:
   emojis: true
+  ignored_files:
+    - /test/sort_test.dart

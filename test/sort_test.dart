@@ -1,9 +1,10 @@
 // 📦 Package imports:
-import 'package:import_sorter/sort.dart';
 import 'package:test/test.dart';
 
+// 🌎 Project imports:
+import 'package:import_sorter/sort.dart';
+
 void emojiSwitcher(bool emojis) {
-  const blankLines = <String>[];
   const packageName = 'import_sorter_test';
   const dependencies = [
     'provider',
