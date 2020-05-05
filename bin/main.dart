@@ -21,8 +21,12 @@ void main(List<String> args) {
   // Getting all dependencies and package name
   final packageName = pubspecYaml['name'];
   final dependencies = [];
-  if (pubspecYaml.containsKey('dependencies')) {
-    if (pubspecYaml['dependencies'].keys.contains('flutter')) {
+  if (pubspecYaml.containsKey('dependencies') ||
+      pubspecYaml.containsKey('dev_dependencies')) {
+    if (pubspecYaml['dependencies']?.keys?.contains('flutter') ??
+        false ||
+            pubspecYaml['dev_dependencies'].keys.contains('flutter_test') ??
+        false) {
       print('┏━━🏃‍ Running: flutter pub get');
       Process.runSync('flutter', ['pub', 'get'], runInShell: true);
       print('┃  ┗━━✅ Ran flutter pub get\n┃  ');
