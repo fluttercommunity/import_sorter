@@ -1,3 +1,7 @@
+## 2.0.3
+
+- Fix problem when no `dev_dependencies are present`
+
 ## 2.0.2
 
 - Drop process_run dependant

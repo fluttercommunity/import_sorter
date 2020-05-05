@@ -4,7 +4,7 @@
 
 ![Analyzer](https://github.com/fluttercommunity/import_sorter/workflows/Analyzer/badge.svg) ![Dart CI](https://github.com/fluttercommunity/import_sorter/workflows/Dart%20CI/badge.svg)
 
-📱 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following format:
+🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following format:
 
 1. Dart imports
 2. Flutter imports
@@ -56,7 +56,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^2.0.2` to your `dev_dependencies`
+Simply add `import_sorter: ^2.0.3` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 
