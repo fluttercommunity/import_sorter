@@ -78,7 +78,7 @@ import_sorter:
     - /lib/main.dart
 ```
 
-If you need another example check the example app [Example app](example/example_app/pubspec.yaml)
+If you need another example check the [example app](example/example_app/pubspec.yaml)
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 
