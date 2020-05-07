@@ -49,7 +49,7 @@ String sortImports(
       packageImports.isEmpty &&
       projectImports.isEmpty) return beforeImportLines.join('\n') + '\n';
 
-  beforeImportLines.removeWhere((line) => line != '');
+  beforeImportLines.removeWhere((line) => line == '');
 
   final sortedLines = <String>[...beforeImportLines];
 

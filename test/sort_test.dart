@@ -53,7 +53,7 @@ void main(List<String> args) async {
 ''';
 
   test(
-    'No imports and code',
+    'No imports and no code',
     () {
       expect(
         sortImports(
@@ -62,7 +62,7 @@ void main(List<String> args) async {
           dependencies,
           emojis,
         ),
-        '\n',
+        '',
       );
     },
   );
@@ -91,7 +91,7 @@ void main(List<String> args) async {
         dependencies,
         emojis,
       );
-      expect(sortedImports, '$sampleProgram\n');
+      expect('$sortedImports\n', '$sampleProgram\n');
     },
   );
   test(
@@ -167,6 +167,22 @@ void main(List<String> args) async {
       expect(
         sortedImports,
         '// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+      );
+    },
+  );
+  test(
+    'Code before all imports',
+    () {
+      final sortedImports = sortImports(
+        'return;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+            .split('\n'),
+        packageName,
+        dependencies,
+        emojis,
+      );
+      expect(
+        sortedImports,
+        'return;\n\n// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
       );
     },
   );
