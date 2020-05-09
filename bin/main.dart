@@ -56,6 +56,7 @@ void main(List<String> args) {
           Process.runSync('flutter', ['pub', 'get'], runInShell: true);
       if (flutterPubGet.exitCode != 0) {
         stdout.write('\n┃  ┗━━❌ Failed to run flutter pub get┃  ');
+        exit(flutterPubGet.exitCode);
       }
       stdout.write('\n┃  ┗━━✅ Ran flutter pub get\n┃  ');
     } else {
@@ -63,6 +64,7 @@ void main(List<String> args) {
       final pubGet = Process.runSync('pub', ['get'], runInShell: true);
       if (pubGet.exitCode != 0) {
         stdout.write('\n┃  ┗━━❌ Failed to run pub get ┃  ');
+        exit(pubGet.exitCode);
       }
       stdout.write('\n┃  ┗━━✅ Ran pub get\n┃  ');
     }

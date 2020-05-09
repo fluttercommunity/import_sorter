@@ -1,3 +1,7 @@
+## 3.0.4
+
+- Actually exit the program when pub get fails
+
 ## 3.0.3
 
 - Fix removal of blank line when no imports
