@@ -74,7 +74,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^2.0.3` to your `dev_dependencies`
+Simply add `import_sorter: ^3.0.0` to your `dev_dependencies`
 
 ## 🏃‍♂️ Running
 
@@ -100,4 +100,4 @@ If you need another example check the [example app](example/example_app/pubspec.
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 
-All contributions are welcome! Just make sure that its not an already existing issue or pull request
+All contributions are welcome! Just make sure that its not an already existing issue or pull request.
