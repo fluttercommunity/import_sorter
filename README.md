@@ -1,10 +1,28 @@
+```
+ ___  _____ ______   ________  ________  ________  _________
+|\  \|\   _ \  _   \|\   __  \|\   __  \|\   __  \|\___   ___\
+\ \  \ \  \\\__\ \  \ \  \|\  \ \  \|\  \ \  \|\  \|___ \  \_|
+ \ \  \ \  \\|__| \  \ \   ____\ \  \\\  \ \   _  _\   \ \  \
+  \ \  \ \  \    \ \  \ \  \___|\ \  \\\  \ \  \\  \|   \ \  \
+   \ \__\ \__\    \ \__\ \__\    \ \_______\ \__\\ _\    \ \__\
+    \|__|\|__|     \|__|\|__|     \|_______|\|__|\|__|    \|__|
+    ________  ________  ________  _________  _______   ________
+   |\   ____\|\   __  \|\   __  \|\___   ___\\  ___ \ |\   __  \
+   \ \  \___|\ \  \|\  \ \  \|\  \|___ \  \_\ \   __/|\ \  \|\  \
+    \ \_____  \ \  \\\  \ \   _  _\   \ \  \ \ \  \_|/_\ \   _  _\
+     \|____|\  \ \  \\\  \ \  \\  \|   \ \  \ \ \  \_|\ \ \  \\  \|
+       ____\_\  \ \_______\ \__\\ _\    \ \__\ \ \_______\ \__\\ _\
+      |\_________\|_______|\|__|\|__|    \|__|  \|_______|\|__|\|__|
+      \|_________|
+```
+
 # import_sorter ![Pub Version](https://img.shields.io/pub/v/import_sorter)
 
 [![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
 
 ![Analyzer](https://github.com/fluttercommunity/import_sorter/workflows/Analyzer/badge.svg) ![Dart CI](https://github.com/fluttercommunity/import_sorter/workflows/Dart%20CI/badge.svg)
 
-🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following format:
+🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following order:
 
 1. Dart imports
 2. Flutter imports

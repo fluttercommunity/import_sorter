@@ -13,11 +13,11 @@ environment:
 
 dependencies:
   yaml: ^2.2.0
+  args: ^1.6.0
+  colorize: ^2.0.0
 
 dev_dependencies:
   test: ^1.14.3
 
 import_sorter:
   emojis: true
-  ignored_files:
-    - /test/sort_test.dart

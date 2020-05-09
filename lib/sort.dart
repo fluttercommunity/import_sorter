@@ -5,6 +5,15 @@ String sortImports(
   List dependencies,
   bool emojis,
 ) {
+  String dartImportComment(bool emojis) =>
+      '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
+  String flutterImportComment(bool emojis) =>
+      '//${emojis ? ' 📱 ' : ' '}Flutter imports:';
+  String packageImportComment(bool emojis) =>
+      '//${emojis ? ' 📦 ' : ' '}Package imports:';
+  String projectImportComment(bool emojis) =>
+      '//${emojis ? ' 🌎 ' : ' '}Project imports:';
+
   final beforeImportLines = <String>[];
   final afterImportLines = <String>[];
 
@@ -13,9 +22,25 @@ String sortImports(
   final packageImports = <String>[];
   final projectImports = <String>[];
 
+  bool noImports() =>
+      dartImports.isEmpty &&
+      flutterImports.isEmpty &&
+      packageImports.isEmpty &&
+      projectImports.isEmpty;
+
+  var isMultiLineString = false;
+
   for (int i = 0; i < lines.length; i++) {
+    // Check if line is in multiline string
+    if (_timesContained(lines[i], "'''") == 1 ||
+        _timesContained(lines[i], '"""') == 1) {
+      isMultiLineString = !isMultiLineString;
+    }
+
     // If line is an import line
-    if (lines[i].startsWith('import ') && lines[i].endsWith(';')) {
+    if (lines[i].startsWith('import ') &&
+        lines[i].endsWith(';') &&
+        !isMultiLineString) {
       if (lines[i].contains('dart:')) {
         dartImports.add(lines[i]);
       } else if (lines[i].contains('package:flutter/')) {
@@ -31,25 +56,32 @@ String sortImports(
         }
       }
     } else if (i != lines.length - 1 &&
-        lines[i].contains('//') &&
+        (lines[i] == dartImportComment(false) ||
+            lines[i] == flutterImportComment(false) ||
+            lines[i] == packageImportComment(false) ||
+            lines[i] == projectImportComment(false) ||
+            lines[i] == dartImportComment(true) ||
+            lines[i] == flutterImportComment(true) ||
+            lines[i] == packageImportComment(true) ||
+            lines[i] == projectImportComment(true)) &&
         lines[i + 1].startsWith('import ') &&
         lines[i + 1].endsWith(';')) {
-    } else if (dartImports.isEmpty &&
-        flutterImports.isEmpty &&
-        packageImports.isEmpty &&
-        projectImports.isEmpty) {
+    } else if (noImports()) {
       beforeImportLines.add(lines[i]);
     } else {
       afterImportLines.add(lines[i]);
     }
   }
 
-  if (dartImports.isEmpty &&
-      flutterImports.isEmpty &&
-      packageImports.isEmpty &&
-      projectImports.isEmpty) return beforeImportLines.join('\n') + '\n';
+  // If no import return original string of lines
+  if (noImports()) return lines.join('\n');
 
-  beforeImportLines.removeWhere((line) => line != '');
+  // Remove spaces
+  if (beforeImportLines.isNotEmpty) {
+    if (beforeImportLines.last.trim() == '') {
+      beforeImportLines.removeLast();
+    }
+  }
 
   final sortedLines = <String>[...beforeImportLines];
 
@@ -58,19 +90,19 @@ String sortImports(
     sortedLines.add('');
   }
   if (dartImports.isNotEmpty) {
-    sortedLines.add('//${emojis ? ' 🎯 ' : ' '}Dart imports:');
+    sortedLines.add(dartImportComment(emojis));
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
     if (dartImports.isNotEmpty) sortedLines.add('');
-    sortedLines.add('//${emojis ? ' 📱 ' : ' '}Flutter imports:');
+    sortedLines.add(flutterImportComment(emojis));
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
     if (dartImports.isNotEmpty || flutterImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add('//${emojis ? ' 📦 ' : ' '}Package imports:');
+    sortedLines.add(packageImportComment(emojis));
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
@@ -79,7 +111,7 @@ String sortImports(
         packageImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add('//${emojis ? ' 🌎 ' : ' '}Project imports:');
+    sortedLines.add(projectImportComment(emojis));
     sortedLines.addAll(projectImports);
   }
 
@@ -100,3 +132,8 @@ String sortImports(
 
   return sortedLines.join('\n');
 }
+
+/// Get the number of times a string contains another
+/// string
+int _timesContained(String string, String looking) =>
+    string.split(looking).length - 1;
