@@ -77,7 +77,15 @@ List sortImports(
   }
 
   // If no import return original string of lines
-  if (noImports()) return [lines.join('\n'), 0];
+  if (noImports()) {
+    if (lines.last != '') {
+      return [
+        [...lines, ''].join('\n'),
+        0
+      ];
+    }
+    return [lines.join('\n'), 0];
+  }
 
   // Remove spaces
   if (beforeImportLines.isNotEmpty) {

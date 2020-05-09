@@ -84,6 +84,7 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 
 - Add the `-e` flag to the run command and have emojis added to your imports 😄
 - If your using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`
+- Add the `-h` flag if you need any help from the command line!
 
 ## 🏗️ Config
 
