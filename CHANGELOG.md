@@ -1,3 +1,7 @@
+## 3.0.1
+
+- Move issue templates to correct location
+
 ## 3.0.0
 
 - Fix problem with imports in multiline strings
