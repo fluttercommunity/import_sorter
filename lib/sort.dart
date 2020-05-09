@@ -78,7 +78,9 @@ String sortImports(
 
   // Remove spaces
   if (beforeImportLines.isNotEmpty) {
-    beforeImportLines.removeLast();
+    if (beforeImportLines.last.trim() == '') {
+      beforeImportLines.removeLast();
+    }
   }
 
   final sortedLines = <String>[...beforeImportLines];

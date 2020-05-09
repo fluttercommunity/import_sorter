@@ -174,7 +174,7 @@ void main(List<String> args) async {
     'Code before all imports',
     () {
       final sortedImports = sortImports(
-        'library import_sorter;\n\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+        'library import_sorter;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
             .split('\n'),
         packageName,
         dependencies,
