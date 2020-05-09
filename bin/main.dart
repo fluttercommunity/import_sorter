@@ -51,20 +51,20 @@ void main(List<String> args) {
         false ||
             pubspecYaml['dev_dependencies'].keys.contains('flutter_test') ??
         false) {
-      stdout.write('\n┏━━🏃‍  Running: flutter pub get');
+      stdout.write('\n┏━━🏃‍ Running: flutter pub get');
       final flutterPubGet =
           Process.runSync('flutter', ['pub', 'get'], runInShell: true);
       if (flutterPubGet.exitCode != 0) {
-        stdout.write('\n┃  ┗━━❌  Failed to run flutter pub get┃  ');
+        stdout.write('\n┃  ┗━━❌ Failed to run flutter pub get┃  ');
       }
-      stdout.write('\n┃  ┗━━✅  Ran flutter pub get┃  ');
+      stdout.write('\n┃  ┗━━✅ Ran flutter pub get\n┃  ');
     } else {
-      stdout.write('\n┏━━🏃‍  Running: pub get');
+      stdout.write('\n┏━━🏃‍ Running: pub get');
       final pubGet = Process.runSync('pub', ['get'], runInShell: true);
       if (pubGet.exitCode != 0) {
-        stdout.write('\n┃  ┗━━❌  Failed to run pub get ┃  ');
+        stdout.write('\n┃  ┗━━❌ Failed to run pub get ┃  ');
       }
-      stdout.write('\n┃  ┗━━✅  Ran pub get\n┃  ');
+      stdout.write('\n┃  ┗━━✅ Ran pub get\n┃  ');
     }
   }
 
@@ -103,21 +103,25 @@ void main(List<String> args) {
     dartFiles.remove('$currentPath$file');
   }
 
-  stdout.write('\n┣━━🏭  Sorting Files');
+  stdout.write('\n┣━━🏭 Sorting Files');
 
   // Sorting and writing to files
   int filesFormatted = 0;
+  int importsSorted = 0;
+
   for (final String filePath in dartFiles.keys) {
-    File(filePath).writeAsStringSync(sort.sortImports(
+    final sortedFile = sort.sortImports(
       dartFiles[filePath],
       packageName,
       dependencies,
       emojis,
-    ));
+    );
+    File(filePath).writeAsStringSync(sortedFile[0]);
+    importsSorted += sortedFile[1];
     filesFormatted++;
     final dirChunks = filePath.replaceAll(currentPath, '').split('/');
     stdout.write(
-        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅  Formatted ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
+        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅ Sorted ${sortedFile[1]} imports in ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
     color(
       dirChunks.last,
       back: Styles.BOLD,
@@ -127,6 +131,6 @@ void main(List<String> args) {
   }
   stopwatch.stop();
   stdout.write(
-      '┃\n┗━━😄  Formatted $filesFormatted files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
+      '┃\n┗━━🙌 Sorted $importsSorted imports in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
   stdout.write('\n');
 }

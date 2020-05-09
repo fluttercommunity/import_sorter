@@ -1,5 +1,8 @@
 /// Sort the imports
-String sortImports(
+/// Returns the sorted file as a string at
+/// index 0 and the number of sorted imports
+/// at index 1
+List sortImports(
   List<String> lines,
   String package_name,
   List dependencies,
@@ -74,7 +77,7 @@ String sortImports(
   }
 
   // If no import return original string of lines
-  if (noImports()) return lines.join('\n');
+  if (noImports()) return [lines.join('\n'), 0];
 
   // Remove spaces
   if (beforeImportLines.isNotEmpty) {
@@ -130,7 +133,13 @@ String sortImports(
 
   sortedLines.add('');
 
-  return sortedLines.join('\n');
+  return [
+    sortedLines.join('\n'),
+    dartImports.length +
+        flutterImports.length +
+        packageImports.length +
+        projectImports.length
+  ];
 }
 
 /// Get the number of times a string contains another
