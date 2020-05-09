@@ -7,11 +7,31 @@ import 'package:colorize/colorize.dart';
 import 'package:yaml/yaml.dart';
 
 // 🌎 Project imports:
+import 'package:import_sorter/args.dart' as local_args;
 import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main(List<String> args) {
+  // Setting arguments
   final parser = ArgParser();
+  parser.addFlag(
+    'emojis',
+    abbr: 'e',
+    negatable: false,
+  );
+  parser.addFlag(
+    'ignore-config',
+    negatable: false,
+  );
+  parser.addFlag(
+    'help',
+    abbr: 'h',
+    negatable: false,
+  );
+  final argResults = parser.parse(args).arguments;
+  if (argResults.contains('-h') || argResults.contains('--help')) {
+    local_args.outputHelp();
+  }
 
   final currentPath = Directory.current.path;
   /*
@@ -59,7 +79,7 @@ void main(List<String> args) {
   final ignored_files = [];
 
   // Reading from config in pubspec.yaml
-  if (!args.contains('--ignore-config')) {
+  if (!argResults.contains('--ignore-config')) {
     if (pubspecYaml.containsKey('import_sorter')) {
       final config = pubspecYaml['import_sorter'];
       if (config.containsKey('emojis')) emojis = config['emojis'];
@@ -70,7 +90,7 @@ void main(List<String> args) {
   }
 
   // Setting values from args
-  if (!emojis) emojis = args.contains('-e');
+  if (!emojis) emojis = argResults.contains('-e');
 
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles(currentPath);
