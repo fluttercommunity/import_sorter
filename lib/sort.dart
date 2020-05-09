@@ -78,11 +78,13 @@ List sortImports(
 
   // If no import return original string of lines
   if (noImports()) {
-    if (lines.last != '') {
-      return [
-        [...lines, ''].join('\n'),
-        0
-      ];
+    if (lines.length > 1) {
+      if (lines.last != '') {
+        return [
+          [...lines, ''].join('\n'),
+          0
+        ];
+      }
     }
     return [lines.join('\n'), 0];
   }

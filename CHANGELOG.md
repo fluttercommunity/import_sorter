@@ -1,3 +1,7 @@
+## 3.0.3
+
+- Fix removal of blank line when no imports
+
 ## 3.0.2
 
 - Improve user output
