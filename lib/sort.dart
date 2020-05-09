@@ -22,6 +22,12 @@ String sortImports(
   final packageImports = <String>[];
   final projectImports = <String>[];
 
+  bool noImports() =>
+      dartImports.isEmpty &&
+      flutterImports.isEmpty &&
+      packageImports.isEmpty &&
+      projectImports.isEmpty;
+
   var isMultiLineString = false;
 
   for (int i = 0; i < lines.length; i++) {
@@ -60,10 +66,7 @@ String sortImports(
             lines[i] == projectImportComment(true)) &&
         lines[i + 1].startsWith('import ') &&
         lines[i + 1].endsWith(';')) {
-    } else if (dartImports.isEmpty &&
-        flutterImports.isEmpty &&
-        packageImports.isEmpty &&
-        projectImports.isEmpty) {
+    } else if (noImports()) {
       beforeImportLines.add(lines[i]);
     } else {
       afterImportLines.add(lines[i]);
@@ -71,10 +74,7 @@ String sortImports(
   }
 
   // If no import return original string of lines
-  if (dartImports.isEmpty &&
-      flutterImports.isEmpty &&
-      packageImports.isEmpty &&
-      projectImports.isEmpty) return lines.join('\n');
+  if (noImports()) return lines.join('\n');
 
   // Remove spaces
   if (beforeImportLines.isNotEmpty) {

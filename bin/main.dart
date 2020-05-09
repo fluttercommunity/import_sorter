@@ -2,6 +2,8 @@
 import 'dart:io';
 
 // 📦 Package imports:
+import 'package:args/args.dart';
+import 'package:colorize/colorize.dart';
 import 'package:yaml/yaml.dart';
 
 // 🌎 Project imports:
@@ -9,6 +11,8 @@ import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main(List<String> args) {
+  final parser = ArgParser();
+
   final currentPath = Directory.current.path;
   /*
   Getting the package name and dependencies/dev_dependencies
@@ -18,7 +22,7 @@ void main(List<String> args) {
   final pubspecYamlFile = File('${currentPath}/pubspec.yaml');
   final pubspecYaml = loadYaml(pubspecYamlFile.readAsStringSync());
 
-  // Getting all dependencies and package name
+  // Getting all dependencies and project package name
   final packageName = pubspecYaml['name'];
   final dependencies = [];
   if (pubspecYaml.containsKey('dependencies') ||
@@ -27,13 +31,20 @@ void main(List<String> args) {
         false ||
             pubspecYaml['dev_dependencies'].keys.contains('flutter_test') ??
         false) {
-      print('┏━━🏃‍ Running: flutter pub get');
-      Process.runSync('flutter', ['pub', 'get'], runInShell: true);
-      print('┃  ┗━━✅ Ran flutter pub get\n┃  ');
+      stdout.write('\n┏━━🏃‍  Running: flutter pub get');
+      final flutterPubGet =
+          Process.runSync('flutter', ['pub', 'get'], runInShell: true);
+      if (flutterPubGet.exitCode != 0) {
+        stdout.write('\n┃  ┗━━❌  Failed to run flutter pub get┃  ');
+      }
+      stdout.write('\n┃  ┗━━✅  Ran flutter pub get┃  ');
     } else {
-      print('┏━━🏃‍ Running: pub get');
-      Process.runSync('pub', ['get'], runInShell: true);
-      print('┃  ┗━━✅ Ran pub get\n┃  ');
+      stdout.write('\n┏━━🏃‍  Running: pub get');
+      final pubGet = Process.runSync('pub', ['get'], runInShell: true);
+      if (pubGet.exitCode != 0) {
+        stdout.write('\n┃  ┗━━❌  Failed to run pub get ┃  ');
+      }
+      stdout.write('\n┃  ┗━━✅  Ran pub get\n┃  ');
     }
   }
 
@@ -72,7 +83,7 @@ void main(List<String> args) {
     dartFiles.remove('$currentPath$file');
   }
 
-  print('┣━━🏭 Sorting Files');
+  stdout.write('\n┣━━🏭  Sorting Files');
 
   // Sorting and writing to files
   int filesFormatted = 0;
@@ -84,10 +95,18 @@ void main(List<String> args) {
       emojis,
     ));
     filesFormatted++;
-    print(
-        '┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅ Formatted ${filePath.replaceAll(currentPath, '')}');
+    final dirChunks = filePath.replaceAll(currentPath, '').split('/');
+    stdout.write(
+        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅  Formatted ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
+    color(
+      dirChunks.last,
+      back: Styles.BOLD,
+      front: Styles.GREEN,
+      isBold: true,
+    );
   }
   stopwatch.stop();
-  print(
-      '┃  \n┗━━😄 Formatted $filesFormatted files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds');
+  stdout.write(
+      '┃\n┗━━😄  Formatted $filesFormatted files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
+  stdout.write('\n');
 }

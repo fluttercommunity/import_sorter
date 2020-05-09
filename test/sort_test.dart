@@ -174,7 +174,7 @@ void main(List<String> args) async {
     'Code before all imports',
     () {
       final sortedImports = sortImports(
-        'return;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+        'library import_sorter;\n\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
             .split('\n'),
         packageName,
         dependencies,
@@ -182,7 +182,7 @@ void main(List<String> args) async {
       );
       expect(
         sortedImports,
-        'return;\n\n// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+        'library import_sorter;\n\n// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
       );
     },
   );
