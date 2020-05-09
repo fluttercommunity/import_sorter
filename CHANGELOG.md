@@ -1,28 +1,18 @@
+## 3.0.2
+
+- Improve user output
+
 ## 3.0.1
 
 - Move issue templates to correct location
 
 ## 3.0.0
 
-- Fix problem with imports in multiline strings
-- Fix problem with code before imports
-- Add GitHub issue templates
-- Use args for arguments. This brings the addition of the `--help` flag
-- Add some sick looking terminal output as seen below. File names are now in green so its easier to see
-
-```
-┏━━🏃‍  Running: pub get
-┃  ┗━━✅  Ran pub get
-┃
-┣━━🏭  Sorting Files
-┃  ┣━━✅  Formatted /lib/sort.dart
-┃  ┣━━✅  Formatted /lib/files.dart
-┃  ┣━━✅  Formatted /lib/args.dart
-┃  ┣━━✅  Formatted /bin/main.dart
-┃  ┗━━✅  Formatted /test/sort_test.dart
-┃
-┗━━😄  Formatted 5 files in 0.58 seconds
-```
+- Fix problem with imports in multiline strings.
+- Fix problem with code before imports.
+- Add GitHub issue templates.
+- Use args for arguments. This brings the addition of the `--help` flag.
+- Add some sick looking terminal with colors. File names are now in green so its easier to see.
 
 ## 2.0.3
 
