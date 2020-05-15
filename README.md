@@ -92,8 +92,8 @@ If you use import_sorter a lot or need to ignore certain files you should really
 
 ```yaml
 import_sorter:
-  emojis: false  # Optional
-  ignored_files:  # Optional
+  emojis: false  # Optional, defaults to false
+  ignored_files:  # Optional, defaults to []
     - /lib/main.dart
 ```
 
