@@ -1,3 +1,8 @@
+## 3.0.5
+
+- Improve cli doc
+- Change flutter emoji to 🐦
+
 ## 3.0.4
 
 - Actually exit the program when pub get fails
