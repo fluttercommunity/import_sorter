@@ -11,7 +11,7 @@ List sortImports(
   String dartImportComment(bool emojis) =>
       '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
   String flutterImportComment(bool emojis) =>
-      '//${emojis ? ' 📱 ' : ' '}Flutter imports:';
+      '//${emojis ? ' 🐦 ' : ' '}Flutter imports:';
   String packageImportComment(bool emojis) =>
       '//${emojis ? ' 📦 ' : ' '}Package imports:';
   String projectImportComment(bool emojis) =>

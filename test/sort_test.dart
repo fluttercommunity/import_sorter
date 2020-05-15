@@ -78,7 +78,7 @@ void main(List<String> args) async {
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n',
+        '// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '🐦 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n',
       );
     },
   );
@@ -120,7 +120,7 @@ void main(List<String> args) async {
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n$sampleProgram\n',
+        '// ${emojis ? '🐦 ' : ''}Flutter imports:\n$flutterImports\n$sampleProgram\n',
       );
     },
   );
@@ -166,7 +166,7 @@ void main(List<String> args) async {
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+        '// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '🐦 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
       );
     },
   );
@@ -182,7 +182,7 @@ void main(List<String> args) async {
       );
       expect(
         sortedImports[0],
-        'library import_sorter;\n\n// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '📱 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+        'library import_sorter;\n\n// ${emojis ? '🎯 ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '🐦 ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '📦 ' : ''}Package imports:\n$packageImports\n// ${emojis ? '🌎 ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
       );
     },
   );
