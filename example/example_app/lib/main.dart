@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:js';
 
-// 📱 Flutter imports:
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/physics.dart';
