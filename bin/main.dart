@@ -78,10 +78,6 @@ void main(List<String> args) {
   dependencies.addAll(pubspecLock['packages'].keys);
 
   var emojis = false;
-  var dartEmoji = '🎯';
-  var flutterEmoji = '🐦';
-  var packageEmoji = '📦';
-  var projectEmoji = '🌎';
   final ignored_files = [];
 
   // Reading from config in pubspec.yaml safely
@@ -89,19 +85,6 @@ void main(List<String> args) {
     if (pubspecYaml.containsKey('import_sorter')) {
       final config = pubspecYaml['import_sorter'];
       if (config.containsKey('emojis')) emojis = config['emojis'];
-      if (!emojis) emojis = argResults.contains('-e');
-      if (emojis) {
-        if (config.containsKey('dart_emoji')) dartEmoji = config['dart_emoji'];
-        if (config.containsKey('flutter_emoji')) {
-          flutterEmoji = config['flutter_emoji'];
-        }
-        if (config.containsKey('package_emoji')) {
-          packageEmoji = config['package_emoji'];
-        }
-        if (config.containsKey('project_emoji')) {
-          projectEmoji = config['project_emoji'];
-        }
-      }
       if (config.containsKey('ignored_files')) {
         ignored_files.addAll(config['ignored_files']);
       }
@@ -130,15 +113,7 @@ void main(List<String> args) {
 
   for (final String filePath in dartFiles.keys) {
     final sortedFile = sort.sortImports(
-      dartFiles[filePath],
-      packageName,
-      dependencies,
-      emojis,
-      dartEmoji,
-      flutterEmoji,
-      packageEmoji,
-      projectEmoji,
-    );
+        dartFiles[filePath], packageName, dependencies, emojis);
     File(filePath).writeAsStringSync(sortedFile[0]);
     importsSorted += sortedFile[1];
     filesFormatted++;

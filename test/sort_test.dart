@@ -70,10 +70,6 @@ void main(List<String> args) async {
           packageName,
           dependencies,
           emojis,
-          dartEmoji,
-          flutterEmoji,
-          packageEmoji,
-          projectEmoji,
         )[0],
         '',
       );
@@ -88,10 +84,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],
@@ -107,10 +99,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect('${sortedImports[0]}\n', '$sampleProgram\n');
     },
@@ -123,10 +111,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],
@@ -142,10 +126,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],
@@ -161,10 +141,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],
@@ -180,10 +156,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],
@@ -200,10 +172,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],
@@ -220,10 +188,6 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
-        dartEmoji,
-        flutterEmoji,
-        packageEmoji,
-        projectEmoji,
       );
       expect(
         sortedImports[0],

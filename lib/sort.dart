@@ -7,19 +7,15 @@ List sortImports(
   String package_name,
   List dependencies,
   bool emojis,
-  String dartEmoji,
-  String flutterEmoji,
-  String packageEmoji,
-  String projectEmoji,
 ) {
   String dartImportComment(bool emojis) =>
-      '//${emojis ? ' $dartEmoji ' : ' '}Dart imports:';
+      '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
   String flutterImportComment(bool emojis) =>
-      '//${emojis ? ' $flutterEmoji ' : ' '}Flutter imports:';
+      '//${emojis ? ' 🐦 ' : ' '}Flutter imports:';
   String packageImportComment(bool emojis) =>
-      '//${emojis ? ' $packageEmoji ' : ' '}Package imports:';
+      '//${emojis ? ' 📦 ' : ' '}Package imports:';
   String projectImportComment(bool emojis) =>
-      '//${emojis ? ' $projectEmoji ' : ' '}Project imports:';
+      '//${emojis ? ' 🌎 ' : ' '}Project imports:';
 
   final beforeImportLines = <String>[];
   final afterImportLines = <String>[];
@@ -70,7 +66,8 @@ List sortImports(
             lines[i] == dartImportComment(true) ||
             lines[i] == flutterImportComment(true) ||
             lines[i] == packageImportComment(true) ||
-            lines[i] == projectImportComment(true)) &&
+            lines[i] == projectImportComment(true) ||
+            lines[i] == '// 📱 Flutter imports:') &&
         lines[i + 1].startsWith('import ') &&
         lines[i + 1].endsWith(';')) {
     } else if (noImports()) {
