@@ -7,15 +7,19 @@ List sortImports(
   String package_name,
   List dependencies,
   bool emojis,
+  String dartEmoji,
+  String flutterEmoji,
+  String packageEmoji,
+  String projectEmoji,
 ) {
   String dartImportComment(bool emojis) =>
-      '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
+      '//${emojis ? ' $dartEmoji ' : ' '}Dart imports:';
   String flutterImportComment(bool emojis) =>
-      '//${emojis ? ' 🐦 ' : ' '}Flutter imports:';
+      '//${emojis ? ' $flutterEmoji ' : ' '}Flutter imports:';
   String packageImportComment(bool emojis) =>
-      '//${emojis ? ' 📦 ' : ' '}Package imports:';
+      '//${emojis ? ' $packageEmoji ' : ' '}Package imports:';
   String projectImportComment(bool emojis) =>
-      '//${emojis ? ' 🌎 ' : ' '}Project imports:';
+      '//${emojis ? ' $projectEmoji ' : ' '}Project imports:';
 
   final beforeImportLines = <String>[];
   final afterImportLines = <String>[];
