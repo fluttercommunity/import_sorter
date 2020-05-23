@@ -45,30 +45,6 @@ void main(List<String> args) {
   // Getting all dependencies and project package name
   final packageName = pubspecYaml['name'];
   final dependencies = [];
-  if (pubspecYaml.containsKey('dependencies') ||
-      pubspecYaml.containsKey('dev_dependencies')) {
-    if (pubspecYaml['dependencies']?.keys?.contains('flutter') ??
-        false ||
-            pubspecYaml['dev_dependencies'].keys.contains('flutter_test') ??
-        false) {
-      stdout.write('\n┏━━🏃‍ Running: flutter pub get');
-      final flutterPubGet =
-          Process.runSync('flutter', ['pub', 'get'], runInShell: true);
-      if (flutterPubGet.exitCode != 0) {
-        stdout.write('\n┃  ┗━━❌ Failed to run flutter pub get┃  ');
-        exit(flutterPubGet.exitCode);
-      }
-      stdout.write('\n┃  ┗━━✅ Ran flutter pub get\n┃  ');
-    } else {
-      stdout.write('\n┏━━🏃‍ Running: pub get');
-      final pubGet = Process.runSync('pub', ['get'], runInShell: true);
-      if (pubGet.exitCode != 0) {
-        stdout.write('\n┃  ┗━━❌ Failed to run pub get ┃  ');
-        exit(pubGet.exitCode);
-      }
-      stdout.write('\n┃  ┗━━✅ Ran pub get\n┃  ');
-    }
-  }
 
   final stopwatch = Stopwatch();
   stopwatch.start();
@@ -105,7 +81,7 @@ void main(List<String> args) {
     dartFiles.remove('$currentPath$file');
   }
 
-  stdout.write('\n┣━━🏭 Sorting Files');
+  stdout.write('\n┏━━🏭 Sorting Files');
 
   // Sorting and writing to files
   int filesFormatted = 0;
