@@ -74,7 +74,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^3.0.5` to your `pubspec.yaml`'s `dev_dependencies`
+Simply add `import_sorter: ^3.0.6` to your `pubspec.yaml`'s `dev_dependencies`
 
 ## 🏃‍♂️ Running
 
@@ -92,8 +92,8 @@ If you use import_sorter a lot or need to ignore certain files you should really
 
 ```yaml
 import_sorter:
-  emojis: false  # Optional, defaults to false
-  ignored_files:  # Optional, defaults to []
+  emojis: false # Optional, defaults to false
+  ignored_files: # Optional, defaults to []
     - /lib/main.dart
 ```
 
