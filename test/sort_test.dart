@@ -1,12 +1,8 @@
-// packageEmoji Package imports:
-
 // 📦 Package imports:
 import 'package:test/test.dart';
 
 // 🌎 Project imports:
 import 'package:import_sorter/sort.dart';
-
-// projectEmoji Project imports:
 
 void emojiSwitcher(bool emojis) {
   const packageName = 'import_sorter_test';
