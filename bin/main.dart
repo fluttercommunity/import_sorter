@@ -82,7 +82,8 @@ void main(List<String> args) {
       pattern,
       multiLine: false,
     );
-    dartFiles.removeWhere((key, _) => expression.hasMatch(key));
+    dartFiles.removeWhere(
+        (key, _) => expression.hasMatch(key.replaceFirst(currentPath, '')));
   }
 
   stdout.write('\n┏━━🏭 Sorting Files');

@@ -88,13 +88,13 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 
 ## 🏗️ Config
 
-If you use import_sorter a lot or need to ignore certain files you should really look at using the config you put in your `pubspec.yaml`. Below is an example config:
+If you use import_sorter a lot or need to ignore certain files you should really look at using the config you put in your `pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied in to the project root path (the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the lib folder:
 
 ```yaml
 import_sorter:
-  emojis: false # Optional, defaults to false
+  emojis: true # Optional, defaults to false
   ignored_files: # Optional, defaults to []
-    - /lib/main.dart
+    - \/lib\/
 ```
 
 If you need another example check the [example app](example/example_app/pubspec.yaml)
