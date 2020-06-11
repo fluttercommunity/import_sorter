@@ -1,12 +1,12 @@
 name: import_sorter
 description: Dart package that automatically sort all your dart imports. Support for any dart project.
-version: 3.0.6
+version: 3.1.0
 repository: 'https://github.com/Matt-Gleich/import_sorter'
 homepage: 'https://mattglei.ch'
 maintainer: Matthew Gleich (@Matt-Gleich)
 authors:
-  - Flutter Community <community@flutter.zone>
   - Matthew Gleich <matthewgleich@gmail.com>
+  - Flutter Community <community@flutter.zone>
 
 environment:
   sdk: '>=2.7.0 <3.0.0'

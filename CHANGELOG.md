@@ -1,3 +1,7 @@
+## 3.1.0
+
+- Use regex for the `ignored_files` option.
+
 ## 3.0.6
 
 - Remove pub get feature. Was causing problems on linux ([#14](https://github.com/fluttercommunity/import_sorter/issues/14))
