@@ -77,8 +77,12 @@ void main(List<String> args) {
           .containsKey('${currentPath}/lib/generated_plugin_registrant.dart')) {
     dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
   }
-  for (final file in ignored_files) {
-    dartFiles.remove('$currentPath$file');
+  for (final pattern in ignored_files) {
+    final expression = RegExp(
+      pattern,
+      multiLine: false,
+    );
+    dartFiles.removeWhere((key, _) => expression.hasMatch(key));
   }
 
   stdout.write('\n┏━━🏭 Sorting Files');
