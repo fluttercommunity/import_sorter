@@ -16,7 +16,7 @@
       \|_________|
 ```
 
-# import_sorter ![Pub Version](https://img.shields.io/pub/v/import_sorter)
+# [import_sorter](https://pub.dev/packages/import_sorter) ![Pub Version](https://img.shields.io/pub/v/import_sorter)
 
 [![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
 
