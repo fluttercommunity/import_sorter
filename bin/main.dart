@@ -84,10 +84,10 @@ void main(List<String> args) {
   stdout.write('\n┏━━🏭 Sorting Files');
 
   // Sorting and writing to files
-  int filesFormatted = 0;
-  int importsSorted = 0;
+  var filesFormatted = 0;
+  var importsSorted = 0;
 
-  for (final String filePath in dartFiles.keys) {
+  for (final filePath in dartFiles.keys) {
     final sortedFile = sort.sortImports(dartFiles[filePath], packageName,
         dependencies, emojis, exitOnChange, noComments);
     File(filePath).writeAsStringSync(sortedFile[0]);

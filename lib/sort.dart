@@ -41,7 +41,7 @@ List sortImports(
 
   var isMultiLineString = false;
 
-  for (int i = 0; i < lines.length; i++) {
+  for (var i = 0; i < lines.length; i++) {
     // Check if line is in multiline string
     if (_timesContained(lines[i], "'''") == 1 ||
         _timesContained(lines[i], '"""') == 1) {
@@ -140,7 +140,7 @@ List sortImports(
   sortedLines.add('');
 
   var addedCode = false;
-  for (int j = 0; j < afterImportLines.length; j++) {
+  for (var j = 0; j < afterImportLines.length; j++) {
     if (afterImportLines[j] != '') {
       sortedLines.add(afterImportLines[j]);
       addedCode = true;
