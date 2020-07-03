@@ -1,0 +1,28 @@
+name: Format
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  dartfmt:
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Run format
+        run: dartfmt --dry-run --set-exit-if-changed .
+
+  import_sorter:
+    runs-on: ubuntu-latest
+    container:
+      image: google/dart:latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Run import_sorter
+        run: |
+          pub get
+          pub run import_sorter:main --exit-if-changed
