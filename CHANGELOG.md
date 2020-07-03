@@ -1,3 +1,8 @@
+## 4.0.0
+
+- Add `--no-comments` flag ([#20](https://github.com/fluttercommunity/import_sorter/issues/20))
+- Add `--exit-if-changed` flag ([#21](https://github.com/fluttercommunity/import_sorter/issues/21))
+
 ## 3.1.0
 
 - Use regex for the `ignored_files` option.
