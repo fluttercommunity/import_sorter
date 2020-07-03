@@ -1,3 +1,9 @@
+// 🎯 Dart imports:
+import 'dart:io';
+
+// 📦 Package imports:
+import 'package:colorize/colorize.dart';
+
 /// Sort the imports
 /// Returns the sorted file as a string at
 /// index 0 and the number of sorted imports
@@ -7,6 +13,8 @@ List sortImports(
   String package_name,
   List dependencies,
   bool emojis,
+  bool exitIfChanged,
+  bool noComments,
 ) {
   String dartImportComment(bool emojis) =>
       '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
@@ -33,7 +41,7 @@ List sortImports(
 
   var isMultiLineString = false;
 
-  for (int i = 0; i < lines.length; i++) {
+  for (var i = 0; i < lines.length; i++) {
     // Check if line is in multiline string
     if (_timesContained(lines[i], "'''") == 1 ||
         _timesContained(lines[i], '"""') == 1) {
@@ -104,19 +112,19 @@ List sortImports(
     sortedLines.add('');
   }
   if (dartImports.isNotEmpty) {
-    sortedLines.add(dartImportComment(emojis));
+    if (!noComments) sortedLines.add(dartImportComment(emojis));
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
     if (dartImports.isNotEmpty) sortedLines.add('');
-    sortedLines.add(flutterImportComment(emojis));
+    if (!noComments) sortedLines.add(flutterImportComment(emojis));
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
     if (dartImports.isNotEmpty || flutterImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add(packageImportComment(emojis));
+    if (!noComments) sortedLines.add(packageImportComment(emojis));
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
@@ -125,14 +133,14 @@ List sortImports(
         packageImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add(projectImportComment(emojis));
+    if (!noComments) sortedLines.add(projectImportComment(emojis));
     sortedLines.addAll(projectImports);
   }
 
   sortedLines.add('');
 
   var addedCode = false;
-  for (int j = 0; j < afterImportLines.length; j++) {
+  for (var j = 0; j < afterImportLines.length; j++) {
     if (afterImportLines[j] != '') {
       sortedLines.add(afterImportLines[j]);
       addedCode = true;
@@ -141,11 +149,22 @@ List sortImports(
       sortedLines.add(afterImportLines[j]);
     }
   }
-
   sortedLines.add('');
 
+  final sortedFile = sortedLines.join('\n');
+  if (exitIfChanged && lines.join('\n') + '\n' != sortedFile) {
+    stdout.write('\n┗━━🚨 ');
+    color(
+      'Please run import sorter!',
+      back: Styles.BOLD,
+      front: Styles.RED,
+      isBold: true,
+    );
+    exit(1);
+  }
+
   return [
-    sortedLines.join('\n'),
+    sortedFile,
     dartImports.length +
         flutterImports.length +
         packageImports.length +

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 // 🌎 Project imports:
 import 'package:import_sorter/sort.dart';
 
-void emojiSwitcher(bool emojis) {
+void switcher(bool emojis, bool noComments) {
   const packageName = 'import_sorter_test';
   const dependencies = [
     'provider',
@@ -52,10 +52,14 @@ void main(List<String> args) async {
 }
 ''';
 
-  const dartEmoji = '🎯';
-  const flutterEmoji = '🐦';
-  const packageEmoji = '📦';
-  const projectEmoji = '🌎';
+  final dartImportComment =
+      noComments ? '' : '// ${emojis ? '🎯 ' : ''}Dart imports:\n';
+  final flutterImportComment =
+      noComments ? '' : '// ${emojis ? '🐦 ' : ''}Flutter imports:\n';
+  final packageImportComment =
+      noComments ? '' : '// ${emojis ? '📦 ' : ''}Package imports:\n';
+  final projectImportComment =
+      noComments ? '' : '// ${emojis ? '🌎 ' : ''}Project imports:\n';
 
   test(
     'No imports and no code',
@@ -66,6 +70,8 @@ void main(List<String> args) async {
           packageName,
           dependencies,
           emojis,
+          false,
+          noComments,
         )[0],
         '',
       );
@@ -80,10 +86,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '$dartEmoji ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '$flutterEmoji ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '$packageEmoji ' : ''}Package imports:\n$packageImports\n// ${emojis ? '$projectEmoji ' : ''}Project imports:\n$projectImports\n',
+        '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n',
       );
     },
   );
@@ -95,6 +103,8 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect('${sortedImports[0]}\n', '$sampleProgram\n');
     },
@@ -107,10 +117,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '$dartEmoji ' : ''}Dart imports:\n$dartImports\n$sampleProgram\n',
+        '$dartImportComment$dartImports\n$sampleProgram\n',
       );
     },
   );
@@ -122,10 +134,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '$flutterEmoji ' : ''}Flutter imports:\n$flutterImports\n$sampleProgram\n',
+        '$flutterImportComment$flutterImports\n$sampleProgram\n',
       );
     },
   );
@@ -137,10 +151,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '$packageEmoji ' : ''}Package imports:\n$packageImports\n$sampleProgram\n',
+        '$packageImportComment$packageImports\n$sampleProgram\n',
       );
     },
   );
@@ -152,10 +168,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '$projectEmoji ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+        '$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
   );
@@ -168,10 +186,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        '// ${emojis ? '$dartEmoji ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '$flutterEmoji ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '$packageEmoji ' : ''}Package imports:\n$packageImports\n// ${emojis ? '$projectEmoji ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+        '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
   );
@@ -184,10 +204,12 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
+        noComments,
       );
       expect(
         sortedImports[0],
-        'library import_sorter;\n\n// ${emojis ? '$dartEmoji ' : ''}Dart imports:\n$dartImports\n// ${emojis ? '$flutterEmoji ' : ''}Flutter imports:\n$flutterImports\n// ${emojis ? '$packageEmoji ' : ''}Package imports:\n$packageImports\n// ${emojis ? '$projectEmoji ' : ''}Project imports:\n$projectImports\n$sampleProgram\n',
+        'library import_sorter;\n\n$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
   );
@@ -195,15 +217,19 @@ void main(List<String> args) async {
 
 void main() {
   group(
-    'No Emojis',
-    () {
-      emojiSwitcher(false);
-    },
+    'No Emojis and Comments',
+    () => switcher(false, false),
   );
   group(
-    'Emojis',
-    () {
-      emojiSwitcher(true);
-    },
+    'Emojis and Comments',
+    () => switcher(true, false),
+  );
+  group(
+    'No Emojis and No Comments',
+    () => switcher(false, true),
+  );
+  group(
+    'Emojis and No Comments',
+    () => switcher(true, true),
   );
 }
