@@ -28,6 +28,10 @@ void main(List<String> args) {
     abbr: 'h',
     negatable: false,
   );
+  parser.addFlag(
+    'exit-if-changed',
+    negatable: false,
+  );
   final argResults = parser.parse(args).arguments;
   if (argResults.contains('-h') || argResults.contains('--help')) {
     local_args.outputHelp();
@@ -69,6 +73,7 @@ void main(List<String> args) {
 
   // Setting values from args
   if (!emojis) emojis = argResults.contains('-e');
+  final exitOnChange = argResults.contains('--exit-if-changed');
 
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles(currentPath);
@@ -94,7 +99,7 @@ void main(List<String> args) {
 
   for (final String filePath in dartFiles.keys) {
     final sortedFile = sort.sortImports(
-        dartFiles[filePath], packageName, dependencies, emojis);
+        dartFiles[filePath], packageName, dependencies, emojis, exitOnChange);
     File(filePath).writeAsStringSync(sortedFile[0]);
     importsSorted += sortedFile[1];
     filesFormatted++;

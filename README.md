@@ -74,7 +74,7 @@ import 'package:example_app/anotherFile2.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^3.1.0` to your `pubspec.yaml`'s `dev_dependencies`
+Simply add `import_sorter: ^3.1.0` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
@@ -82,8 +82,9 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 
 ## 💻 Command Line
 
-- Add the `-e` flag to the run command and have emojis added to your imports 😄
-- If your using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`
+- Add the `-e` flag to the run command and have emojis added to your imports 😄.
+- If your using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`.
+- Want to make sure your files are sorted? Add `--exit-if-changed` to make sure the files are sorted. Good for things like CI.
 - Add the `-h` flag if you need any help from the command line!
 
 ## 🏗️ Config
@@ -97,7 +98,7 @@ import_sorter:
     - \/lib\/
 ```
 
-If you need another example check the [example app](example/example_app/pubspec.yaml)
+If you need another example check the [example app](example/example_app/pubspec.yaml).
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 

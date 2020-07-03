@@ -1,3 +1,9 @@
+// 🎯 Dart imports:
+import 'dart:io';
+
+// 📦 Package imports:
+import 'package:colorize/colorize.dart';
+
 /// Sort the imports
 /// Returns the sorted file as a string at
 /// index 0 and the number of sorted imports
@@ -7,6 +13,7 @@ List sortImports(
   String package_name,
   List dependencies,
   bool emojis,
+  bool exitIfChanged,
 ) {
   String dartImportComment(bool emojis) =>
       '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
@@ -141,11 +148,22 @@ List sortImports(
       sortedLines.add(afterImportLines[j]);
     }
   }
-
   sortedLines.add('');
 
+  final sortedFile = sortedLines.join('\n');
+  if (exitIfChanged && lines.join('\n') + '\n' != sortedFile) {
+    stdout.write('\n┗━━🚨 ');
+    color(
+      'Please run import sorter!',
+      back: Styles.BOLD,
+      front: Styles.RED,
+      isBold: true,
+    );
+    exit(1);
+  }
+
   return [
-    sortedLines.join('\n'),
+    sortedFile,
     dartImports.length +
         flutterImports.length +
         packageImports.length +

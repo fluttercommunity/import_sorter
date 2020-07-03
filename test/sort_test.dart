@@ -66,6 +66,7 @@ void main(List<String> args) async {
           packageName,
           dependencies,
           emojis,
+          false,
         )[0],
         '',
       );
@@ -80,6 +81,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
@@ -95,6 +97,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect('${sortedImports[0]}\n', '$sampleProgram\n');
     },
@@ -107,6 +110,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
@@ -122,6 +126,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
@@ -137,6 +142,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
@@ -152,6 +158,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
@@ -168,6 +175,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
@@ -184,6 +192,7 @@ void main(List<String> args) async {
         packageName,
         dependencies,
         emojis,
+        false,
       );
       expect(
         sortedImports[0],
