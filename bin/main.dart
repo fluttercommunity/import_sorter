@@ -14,24 +14,11 @@ import 'package:import_sorter/sort.dart' as sort;
 void main(List<String> args) {
   // Setting arguments
   final parser = ArgParser();
-  parser.addFlag(
-    'emojis',
-    abbr: 'e',
-    negatable: false,
-  );
-  parser.addFlag(
-    'ignore-config',
-    negatable: false,
-  );
-  parser.addFlag(
-    'help',
-    abbr: 'h',
-    negatable: false,
-  );
-  parser.addFlag(
-    'exit-if-changed',
-    negatable: false,
-  );
+  parser.addFlag('emojis', abbr: 'e', negatable: false);
+  parser.addFlag('ignore-config', negatable: false);
+  parser.addFlag('help', abbr: 'h', negatable: false);
+  parser.addFlag('exit-if-changed', negatable: false);
+  parser.addFlag('no-comments', negatable: false);
   final argResults = parser.parse(args).arguments;
   if (argResults.contains('-h') || argResults.contains('--help')) {
     local_args.outputHelp();
@@ -58,6 +45,7 @@ void main(List<String> args) {
   dependencies.addAll(pubspecLock['packages'].keys);
 
   var emojis = false;
+  var noComments = false;
   final ignored_files = [];
 
   // Reading from config in pubspec.yaml safely
@@ -65,6 +53,7 @@ void main(List<String> args) {
     if (pubspecYaml.containsKey('import_sorter')) {
       final config = pubspecYaml['import_sorter'];
       if (config.containsKey('emojis')) emojis = config['emojis'];
+      if (config.containsKey('comments')) noComments = !config['comments'];
       if (config.containsKey('ignored_files')) {
         ignored_files.addAll(config['ignored_files']);
       }
@@ -73,6 +62,7 @@ void main(List<String> args) {
 
   // Setting values from args
   if (!emojis) emojis = argResults.contains('-e');
+  if (!noComments) noComments = argResults.contains('--no-comments');
   final exitOnChange = argResults.contains('--exit-if-changed');
 
   // Getting all the dart files for the project
@@ -98,8 +88,8 @@ void main(List<String> args) {
   int importsSorted = 0;
 
   for (final String filePath in dartFiles.keys) {
-    final sortedFile = sort.sortImports(
-        dartFiles[filePath], packageName, dependencies, emojis, exitOnChange);
+    final sortedFile = sort.sortImports(dartFiles[filePath], packageName,
+        dependencies, emojis, exitOnChange, noComments);
     File(filePath).writeAsStringSync(sortedFile[0]);
     importsSorted += sortedFile[1];
     filesFormatted++;

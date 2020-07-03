@@ -14,6 +14,7 @@ List sortImports(
   List dependencies,
   bool emojis,
   bool exitIfChanged,
+  bool noComments,
 ) {
   String dartImportComment(bool emojis) =>
       '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
@@ -111,19 +112,19 @@ List sortImports(
     sortedLines.add('');
   }
   if (dartImports.isNotEmpty) {
-    sortedLines.add(dartImportComment(emojis));
+    if (!noComments) sortedLines.add(dartImportComment(emojis));
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
     if (dartImports.isNotEmpty) sortedLines.add('');
-    sortedLines.add(flutterImportComment(emojis));
+    if (!noComments) sortedLines.add(flutterImportComment(emojis));
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
     if (dartImports.isNotEmpty || flutterImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add(packageImportComment(emojis));
+    if (!noComments) sortedLines.add(packageImportComment(emojis));
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
@@ -132,7 +133,7 @@ List sortImports(
         packageImports.isNotEmpty) {
       sortedLines.add('');
     }
-    sortedLines.add(projectImportComment(emojis));
+    if (!noComments) sortedLines.add(projectImportComment(emojis));
     sortedLines.addAll(projectImports);
   }
 
