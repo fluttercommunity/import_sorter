@@ -1,3 +1,7 @@
+## 4.1.0
+
+- Sort imports alphabetically ([#23](https://github.com/fluttercommunity/import_sorter/issues/23))
+
 ## 4.0.0
 
 - Add `--no-comments` flag ([#20](https://github.com/fluttercommunity/import_sorter/issues/20))
