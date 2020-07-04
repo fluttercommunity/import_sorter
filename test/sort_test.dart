@@ -21,10 +21,10 @@ import 'dart:io';
 import 'dart:js';
 ''';
   const flutterImports = '''
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/physics.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/physics.dart';
 ''';
   const packageImports = '''
 import 'package:intl/intl.dart';

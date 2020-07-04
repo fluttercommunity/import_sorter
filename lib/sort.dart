@@ -113,11 +113,13 @@ List sortImports(
   }
   if (dartImports.isNotEmpty) {
     if (!noComments) sortedLines.add(dartImportComment(emojis));
+    dartImports.sort();
     sortedLines.addAll(dartImports);
   }
   if (flutterImports.isNotEmpty) {
     if (dartImports.isNotEmpty) sortedLines.add('');
     if (!noComments) sortedLines.add(flutterImportComment(emojis));
+    flutterImports.sort();
     sortedLines.addAll(flutterImports);
   }
   if (packageImports.isNotEmpty) {
@@ -125,6 +127,7 @@ List sortImports(
       sortedLines.add('');
     }
     if (!noComments) sortedLines.add(packageImportComment(emojis));
+    packageImports.sort();
     sortedLines.addAll(packageImports);
   }
   if (projectImports.isNotEmpty) {
@@ -134,6 +137,7 @@ List sortImports(
       sortedLines.add('');
     }
     if (!noComments) sortedLines.add(projectImportComment(emojis));
+    projectImports.sort();
     sortedLines.addAll(projectImports);
   }
 
