@@ -24,7 +24,7 @@
 ![Dart Tests](https://github.com/fluttercommunity/import_sorter/workflows/Dart%20Tests/badge.svg)
 ![Format](https://github.com/fluttercommunity/import_sorter/workflows/Format/badge.svg)
 
-🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports and reorders them based off the following order:
+🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports alphabetically and them groups them in following order:
 
 1. Dart imports
 2. Flutter imports
@@ -59,10 +59,10 @@ import 'dart:io';
 import 'dart:js';
 
 // Flutter imports:
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/physics.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/physics.dart';
 
 // Package imports:
 import 'package:intl/intl.dart';
