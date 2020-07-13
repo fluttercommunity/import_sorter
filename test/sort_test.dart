@@ -32,8 +32,8 @@ import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
 ''';
   const projectImports = '''
-import 'anotherFile.dart' as af;
 import 'package:import_sorter_test/anotherFile2.dart';
+import 'anotherFile.dart' as af;
 ''';
 
   const sampleProgram = '''
