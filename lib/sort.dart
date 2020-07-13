@@ -31,13 +31,15 @@ List sortImports(
   final dartImports = <String>[];
   final flutterImports = <String>[];
   final packageImports = <String>[];
+  final projectRelativeImports = <String>[];
   final projectImports = <String>[];
 
   bool noImports() =>
       dartImports.isEmpty &&
       flutterImports.isEmpty &&
       packageImports.isEmpty &&
-      projectImports.isEmpty;
+      projectImports.isEmpty &&
+      projectRelativeImports.isEmpty;
 
   var isMultiLineString = false;
 
@@ -56,9 +58,10 @@ List sortImports(
         dartImports.add(lines[i]);
       } else if (lines[i].contains('package:flutter/')) {
         flutterImports.add(lines[i]);
-      } else if (lines[i].contains('package:$package_name/') ||
-          !lines[i].contains('package:')) {
+      } else if (lines[i].contains('package:$package_name/')) {
         projectImports.add(lines[i]);
+      } else if (!lines[i].contains('package:')) {
+        projectRelativeImports.add(lines[i]);
       }
       for (final dependency in dependencies) {
         if (lines[i].contains('package:$dependency/') &&
@@ -130,7 +133,7 @@ List sortImports(
     packageImports.sort();
     sortedLines.addAll(packageImports);
   }
-  if (projectImports.isNotEmpty) {
+  if (projectImports.isNotEmpty || projectRelativeImports.isNotEmpty) {
     if (dartImports.isNotEmpty ||
         flutterImports.isNotEmpty ||
         packageImports.isNotEmpty) {
@@ -138,7 +141,9 @@ List sortImports(
     }
     if (!noComments) sortedLines.add(projectImportComment(emojis));
     projectImports.sort();
+    projectRelativeImports.sort();
     sortedLines.addAll(projectImports);
+    sortedLines.addAll(projectRelativeImports);
   }
 
   sortedLines.add('');

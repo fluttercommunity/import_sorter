@@ -70,13 +70,13 @@ import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'anotherFile.dart';
 import 'package:example_app/anotherFile2.dart';
+import 'anotherFile.dart';
 ```
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.1.0` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.2.1` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 

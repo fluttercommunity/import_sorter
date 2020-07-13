@@ -1,3 +1,11 @@
+## 4.2.1
+
+- Replace relative import with package import
+
+## 4.2.0
+
+- Have relative imports come other imports ([#25](https://github.com/fluttercommunity/import_sorter/issues/25))
+
 ## 4.1.0
 
 - Sort imports alphabetically ([#23](https://github.com/fluttercommunity/import_sorter/issues/23))
