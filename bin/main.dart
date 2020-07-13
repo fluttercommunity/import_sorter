@@ -7,9 +7,9 @@ import 'package:colorize/colorize.dart';
 import 'package:yaml/yaml.dart';
 
 // 🌎 Project imports:
+import 'package:import_sorter/args.dart' as local_args;
 import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
-import '../lib/args.dart' as local_args;
 
 void main(List<String> args) {
   // Setting arguments
