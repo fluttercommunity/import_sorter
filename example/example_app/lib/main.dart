@@ -15,8 +15,8 @@ import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
 
 // 🌎 Project imports:
-import 'anotherFile.dart';
 import 'package:example_app/anotherFile2.dart';
+import 'anotherFile.dart';
 
 void main() {
   runApp(MyApp());
