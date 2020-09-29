@@ -1,3 +1,7 @@
+## 4.2.2
+
+- Add test_driver folder ([#30](https://github.com/fluttercommunity/import_sorter/issues/30))
+
 ## 4.2.1
 
 - Replace relative import with package import

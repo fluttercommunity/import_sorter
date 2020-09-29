@@ -1,4 +1,5 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "ImgBotApp"]:end -->
+
 ```
  ___  _____ ______   ________  ________  ________  _________
 |\  \|\   _ \  _   \|\   __  \|\   __  \|\   __  \|\___   ___\
@@ -25,7 +26,7 @@
 ![Dart Tests](https://github.com/fluttercommunity/import_sorter/workflows/Dart%20Tests/badge.svg)
 ![Format](https://github.com/fluttercommunity/import_sorter/workflows/Format/badge.svg)
 
-🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports alphabetically and them groups them in following order:
+🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports alphabetically and then groups them in the following order:
 
 1. Dart imports
 2. Flutter imports
@@ -77,7 +78,7 @@ import 'anotherFile.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.2.1` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.2.2` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
@@ -93,7 +94,7 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 
 ## 🏗️ Config
 
-If you use import_sorter a lot or need to ignore certain files you should really look at using the config you put in your `pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied in to the project root path (the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the lib folder:
+If you use import_sorter a lot or need to ignore certain files you should look at using the config you put in your `pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied in to the project root path (the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the lib folder:
 
 ```yaml
 import_sorter:
@@ -110,8 +111,8 @@ If you need another example check the [example app](example/example_app/pubspec.
 All contributions are welcome! Just make sure that its not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
 
+## 👥 Contributors
 
 - **[@Matt-Gleich](https://github.com/Matt-Gleich)**
 

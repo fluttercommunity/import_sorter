@@ -1,6 +1,6 @@
 name: import_sorter
 description: Automatically sort all your dart imports. Support for any dart project.
-version: 4.2.1
+version: 4.2.2
 repository: 'https://github.com/Matt-Gleich/import_sorter'
 homepage: 'https://mattglei.ch'
 maintainer: Matthew Gleich (@Matt-Gleich)
