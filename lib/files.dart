@@ -18,6 +18,10 @@ Map<String, List<String>> dartFiles(String currentPath) {
     allContents
         .addAll(Directory('$currentPath/tests').listSync(recursive: true));
   }
+  if (Directory('$currentPath/test_driver').existsSync()) {
+    allContents.addAll(
+        Directory('$currentPath/test_driver').listSync(recursive: true));
+  }
   for (final fileOrDir in allContents) {
     if (fileOrDir is File && fileOrDir.path.endsWith('.dart')) {
       dartFiles[fileOrDir.path] = fileOrDir.readAsLinesSync();
