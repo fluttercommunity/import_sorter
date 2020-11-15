@@ -91,8 +91,9 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 - Want to make sure your files are sorted? Add `--exit-if-changed` to make sure the files are sorted. Good for things like CI.
 - Have no comments before your imports by adding the `--no-comments` flag.
 - Add the `-h` flag if you need any help from the command line!
-- Only run import_sorter on certain files by passing in a regular expression or list of files that should only be sorted. Below are two examples:
-  - `pub run import_sorter:main bin/main.dart lib/`
+- You can only run import_sorter on certain files by passing in a regular expression(s) that will only sort certain files. Below are two examples:
+  - `pub run import_sorter:main bin/main.dart lib/args.dart` (only sorts bin/main.dart and lib/args.dart)
+  - `pub run import_sorter:main lib\/* test\/*` (only sorts files in the lib and test folders)
 
 ## 🏗️ Config
 
@@ -103,7 +104,7 @@ import_sorter:
   emojis: true # Optional, defaults to false
   comments: false # Optional, defaults to true
   ignored_files: # Optional, defaults to []
-    - \/lib\/
+    - \/lib\/*
 ```
 
 If you need another example check the [example app](example/example_app/pubspec.yaml).
