@@ -66,19 +66,15 @@ void main(List<String> args) {
   final exitOnChange = argResults.contains('--exit-if-changed');
 
   // Getting all the dart files for the project
-  final dartFiles = files.dartFiles(currentPath);
+  final dartFiles = files.dartFiles(currentPath, args);
   if (dependencies.contains('flutter') &&
       dartFiles
           .containsKey('${currentPath}/lib/generated_plugin_registrant.dart')) {
     dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
   }
   for (final pattern in ignored_files) {
-    final expression = RegExp(
-      pattern,
-      multiLine: false,
-    );
-    dartFiles.removeWhere(
-        (key, _) => expression.hasMatch(key.replaceFirst(currentPath, '')));
+    dartFiles.removeWhere((key, _) =>
+        RegExp(pattern).hasMatch(key.replaceFirst(currentPath, '')));
   }
 
   stdout.write('\n┏━━🏭 Sorting Files');
