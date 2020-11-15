@@ -1,3 +1,7 @@
+## 4.3.1
+
+- Remove analyzer CI
+
 ## 4.3.0
 
 - Filter what files get sorted on the fly with arguments ([#27](https://github.com/fluttercommunity/import_sorter/issues/27))
