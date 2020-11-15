@@ -22,9 +22,9 @@
 
 [![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
 
-![Analyzer](https://github.com/fluttercommunity/import_sorter/workflows/Analyzer/badge.svg)
-![Dart Tests](https://github.com/fluttercommunity/import_sorter/workflows/Dart%20Tests/badge.svg)
-![Format](https://github.com/fluttercommunity/import_sorter/workflows/Format/badge.svg)
+![analyze](https://github.com/fluttercommunity/import_sorter/workflows/analyze/badge.svg)
+![test](https://github.com/fluttercommunity/import_sorter/workflows/test/badge.svg)
+![format](https://github.com/fluttercommunity/import_sorter/workflows/format/badge.svg)
 
 🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports alphabetically and then groups them in the following order:
 

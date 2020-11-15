@@ -1,8 +1,6 @@
-name: Format
+name: format
 
-on:
-  - push
-  - pull_request
+on: push
 
 jobs:
   dartfmt:
