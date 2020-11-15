@@ -22,7 +22,6 @@
 
 [![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
 
-![analyze](https://github.com/fluttercommunity/import_sorter/workflows/analyze/badge.svg)
 ![test](https://github.com/fluttercommunity/import_sorter/workflows/test/badge.svg)
 ![format](https://github.com/fluttercommunity/import_sorter/workflows/format/badge.svg)
 
