@@ -26,7 +26,7 @@
 ![test](https://github.com/fluttercommunity/import_sorter/workflows/test/badge.svg)
 ![format](https://github.com/fluttercommunity/import_sorter/workflows/format/badge.svg)
 
-🎯 Dart package that automatically sorts all your flutter and dart imports. Any dart project supported! Sorts imports alphabetically and then groups them in the following order:
+🎯 Dart package to automatically organize your dart imports. Any dart project supported! Will sorts imports alphabetically and then group them in the following order:
 
 1. Dart imports
 2. Flutter imports
@@ -111,7 +111,7 @@ If you need another example check the [example app](example/example_app/pubspec.
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 
-All contributions are welcome! Just make sure that its not an already existing issue or pull request.
+All contributions are welcome! Just make sure that it's not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
 
