@@ -14,7 +14,6 @@ environment:
 dependencies:
   args: ^1.6.0
   colorize: ^2.0.0
-  path: ^1.7.0
   yaml: ^2.2.1
 
 dev_dependencies:

@@ -1,9 +1,6 @@
 // 🎯 Dart imports:
 import 'dart:io';
 
-// 📦 Package imports:
-import 'package:path/path.dart';
-
 /// Get all the dart files for the project and the contents
 Map<String, List<String>> dartFiles(String currentPath, List<String> args) {
   final dartFiles = <String, List<String>>{};
