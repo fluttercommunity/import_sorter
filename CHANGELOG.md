@@ -1,3 +1,8 @@
+## 4.3.0
+
+- Filter what files get sorted on the fly with arguments ([#27](https://github.com/fluttercommunity/import_sorter/issues/27))
+- Upgrade all dependencies
+
 ## 4.2.2
 
 - Add test_driver folder ([#30](https://github.com/fluttercommunity/import_sorter/issues/30))

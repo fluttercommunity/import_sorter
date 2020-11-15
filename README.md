@@ -78,7 +78,7 @@ import 'anotherFile.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.2.2` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.3.0` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
@@ -107,7 +107,7 @@ import_sorter:
     - \/lib\/*
 ```
 
-If you need another example check the [example app](example/example_app/pubspec.yaml).
+If you need another example check the [example app's import_sorter configuration](https://github.com/fluttercommunity/import_sorter/blob/master/example/example_app/pubspec.yaml#L76).
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 
