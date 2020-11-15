@@ -22,7 +22,7 @@ Map<String, List<String>> dartFiles(String currentPath) {
 
 List<FileSystemEntity> _readDir(String currentPath, String name) {
   if (Directory('$currentPath/$name').existsSync()) {
-    return Directory('$currentPath/test_driver').listSync(recursive: true);
+    return Directory('$currentPath/$name').listSync(recursive: true);
   }
   return [];
 }
