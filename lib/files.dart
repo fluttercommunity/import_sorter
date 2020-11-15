@@ -5,27 +5,24 @@ import 'dart:io';
 Map<String, List<String>> dartFiles(String currentPath) {
   final dartFiles = <String, List<String>>{};
   final allContents = [
-    ...Directory('$currentPath/lib').listSync(recursive: true)
+    ..._readDir(currentPath, 'lib'),
+    ..._readDir(currentPath, 'bin'),
+    ..._readDir(currentPath, 'test'),
+    ..._readDir(currentPath, 'tests'),
+    ..._readDir(currentPath, 'test_driver'),
   ];
-  if (Directory('$currentPath/bin').existsSync()) {
-    allContents.addAll(Directory('$currentPath/bin').listSync(recursive: true));
-  }
-  if (Directory('$currentPath/test').existsSync()) {
-    allContents
-        .addAll(Directory('$currentPath/test').listSync(recursive: true));
-  }
-  if (Directory('$currentPath/tests').existsSync()) {
-    allContents
-        .addAll(Directory('$currentPath/tests').listSync(recursive: true));
-  }
-  if (Directory('$currentPath/test_driver').existsSync()) {
-    allContents.addAll(
-        Directory('$currentPath/test_driver').listSync(recursive: true));
-  }
+
   for (final fileOrDir in allContents) {
     if (fileOrDir is File && fileOrDir.path.endsWith('.dart')) {
       dartFiles[fileOrDir.path] = fileOrDir.readAsLinesSync();
     }
   }
   return dartFiles;
+}
+
+List<FileSystemEntity> _readDir(String currentPath, String name) {
+  if (Directory('$currentPath/$name').existsSync()) {
+    return Directory('$currentPath/test_driver').listSync(recursive: true);
+  }
+  return [];
 }
