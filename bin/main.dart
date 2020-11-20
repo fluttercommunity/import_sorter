@@ -89,7 +89,7 @@ void main(List<String> args) {
     File(filePath).writeAsStringSync(sortedFile[0]);
     importsSorted += sortedFile[1];
     filesFormatted++;
-    final dirChunks = filePath.replaceAll(currentPath, '').split('/');
+    final dirChunks = filePath.replaceAll("$currentPath/", '').split('/');
     stdout.write(
         '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅ Sorted ${sortedFile[1]} imports in ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
     color(
