@@ -77,7 +77,7 @@ import 'anotherFile.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.3.1` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.4.0` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 

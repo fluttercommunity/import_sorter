@@ -1,3 +1,8 @@
+## 4.4.0
+
+- The name of a file is yellow if it isn't changed. ([#36](https://github.com/fluttercommunity/import_sorter/issues/36))
+- Display the number of imports sorted out of the total number of imports for a file. ([#36](https://github.com/fluttercommunity/import_sorter/issues/36))
+
 ## 4.3.1
 
 - Remove analyzer CI
