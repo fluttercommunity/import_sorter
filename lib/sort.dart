@@ -161,7 +161,12 @@ List sortImports(
   sortedLines.add('');
 
   final sortedFile = sortedLines.join('\n');
-  if (exitIfChanged && lines.join('\n') + '\n' != sortedFile) {
+  final original = lines.join('\n') + '\n';
+  final numberOfImports = dartImports.length +
+      flutterImports.length +
+      packageImports.length +
+      projectImports.length;
+  if (exitIfChanged && original != sortedFile) {
     stdout.write('\n┗━━🚨 ');
     color(
       'Please run import sorter!',
@@ -171,13 +176,14 @@ List sortImports(
     );
     exit(1);
   }
+  if (original == sortedFile) {
+    return [original, 0, numberOfImports];
+  }
 
   return [
     sortedFile,
-    dartImports.length +
-        flutterImports.length +
-        packageImports.length +
-        projectImports.length
+    numberOfImports,
+    numberOfImports,
   ];
 }
 

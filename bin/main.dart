@@ -77,30 +77,33 @@ void main(List<String> args) {
         RegExp(pattern).hasMatch(key.replaceFirst(currentPath, '')));
   }
 
-  stdout.write('\n┏━━🏭 Sorting Files');
+  stdout.write('\n┏━━🗂  Sorting ${dartFiles.length} dart files\n┃  ┃');
 
   // Sorting and writing to files
   var filesFormatted = 0;
-  var importsSorted = 0;
+  var totalImportsSorted = 0;
 
   for (final filePath in dartFiles.keys) {
     final sortedFile = sort.sortImports(dartFiles[filePath], packageName,
         dependencies, emojis, exitOnChange, noComments);
-    File(filePath).writeAsStringSync(sortedFile[0]);
-    importsSorted += sortedFile[1];
+    final importsSorted = sortedFile[1];
+
     filesFormatted++;
+    totalImportsSorted += importsSorted;
+
+    File(filePath).writeAsStringSync(sortedFile[0]);
     final dirChunks = filePath.replaceAll("$currentPath/", '').split('/');
     stdout.write(
-        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━✅ Sorted ${sortedFile[1]} imports in ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
+        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ✅ Sorted ${sortedFile[1]} out of ${sortedFile[2]} imports in ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
     color(
       dirChunks.last,
       back: Styles.BOLD,
-      front: Styles.GREEN,
+      front: importsSorted == 0 ? Styles.YELLOW : Styles.GREEN,
       isBold: true,
     );
   }
   stopwatch.stop();
   stdout.write(
-      '┃\n┗━━🙌 Sorted $importsSorted imports in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
+      '┃\n┗━━🙌 Sorted $totalImportsSorted imports in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
   stdout.write('\n');
 }
