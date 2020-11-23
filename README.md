@@ -77,7 +77,7 @@ import 'anotherFile.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.4.0` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.4.1` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
@@ -110,12 +110,13 @@ If you need another example check the [example app's import_sorter configuration
 
 ## 🚨 [`pre-commit`](https://pre-commit.com/) Hook
 
-There are two pre-commit hooks available: `dart-import-sorter` and `flutter-import-sorter`. They use `pub run` and `flutter pub run` respectively. Use the former for a generic Dart project and the later for a Flutter project.
+There are two pre-commit hooks available: `dart-import-sorter` and `flutter-import-sorter`. They use `pub run` and `flutter pub run` respectively. Use the former for a generic Dart project and the latter for a Flutter project.
 
 Using pre-commit hooks in your project:
-* Install and configure `pre-commit`.
-* Install and configure `import_sorter` using instructions above.
-* Add the following to the `repos` section of your `.pre-commit-config.yaml`:
+
+- Install and configure `pre-commit`.
+- Install and configure `import_sorter` using instructions above.
+- Add the following to the `repos` section of your `.pre-commit-config.yaml`:
 
 ```yaml
   - repo: https://github.com/fluttercommunity/import_sorter

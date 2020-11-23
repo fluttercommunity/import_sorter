@@ -1,3 +1,7 @@
+## 4.4.1
+
+- Fix return when there are 0 imports ([#37](https://github.com/fluttercommunity/import_sorter/issues/37))
+
 ## 4.4.0
 
 - The name of a file is yellow if it isn't changed. ([#36](https://github.com/fluttercommunity/import_sorter/issues/36))
