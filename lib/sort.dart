@@ -94,11 +94,12 @@ List sortImports(
       if (lines.last != '') {
         return [
           [...lines, ''].join('\n'),
+          0,
           0
         ];
       }
     }
-    return [lines.join('\n'), 0];
+    return [lines.join('\n'), 0, 0];
   }
 
   // Remove spaces
