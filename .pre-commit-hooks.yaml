@@ -1,9 +1,9 @@
 - &dart
   id: dart-import-sorter
   name: Dart Import Sorter
-  entry: pub run import_sorter:main
+  entry: dart pub run import_sorter:main
   language: system
-  files: \.dart$
+  types: [dart]
   require_serial: true
   description: |
     Dart package to automatically organize your dart imports. Any dart project supported!    
