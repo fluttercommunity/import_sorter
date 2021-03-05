@@ -1,4 +1,4 @@
-<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "lig", "ImgBotApp"]:end -->
+<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "lig", "ImgBotApp", "jlnrrg"]:end -->
 
 ```
  ___  _____ ______   ________  ________  ________  _________
@@ -144,5 +144,7 @@ All contributions are welcome! Just make sure that it's not an already existing 
 - **[@lig](https://github.com/lig)**
 
 - **[@ImgBotApp](https://github.com/ImgBotApp)**
+
+- **[@jlnrrg](https://github.com/jlnrrg)**
 
 <!-- DO NOT REMOVE - contributor_list:end -->
