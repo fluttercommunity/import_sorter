@@ -1,3 +1,7 @@
+## 4.4.2
+
+- Add null-safety support ([#49](https://github.com/fluttercommunity/import_sorter/issues/49))
+
 ## 4.4.1
 
 - Fix return when there are 0 imports ([#37](https://github.com/fluttercommunity/import_sorter/issues/37))

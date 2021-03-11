@@ -1,6 +1,6 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "lig", "ImgBotApp", "jlnrrg"]:end -->
 
-```
+```txt
  ___  _____ ______   ________  ________  ________  _________
 |\  \|\   _ \  _   \|\   __  \|\   __  \|\   __  \|\___   ___\
 \ \  \ \  \\\__\ \  \ \  \|\  \ \  \|\  \ \  \|\  \|___ \  \_|
@@ -77,7 +77,7 @@ import 'anotherFile.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.4.1` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.4.2` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
@@ -86,7 +86,7 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 ## 💻 Command Line
 
 - Add the `-e` flag to the run command and have emojis added to your imports 😄.
-- If your using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`.
+- If you're using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`.
 - Want to make sure your files are sorted? Add `--exit-if-changed` to make sure the files are sorted. Good for things like CI.
 - Have no comments before your imports by adding the `--no-comments` flag.
 - Add the `-h` flag if you need any help from the command line!
@@ -96,7 +96,7 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 
 ## 🏗️ Config
 
-If you use import_sorter a lot or need to ignore certain files you should look at using the config you put in your `pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied in to the project root path (the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the lib folder:
+If you use import_sorter a lot or need to ignore certain files you should look at using the config you put in your `pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied to the project root path (the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the lib folder:
 
 ```yaml
 import_sorter:
@@ -119,13 +119,13 @@ Using pre-commit hooks in your project:
 - Add the following to the `repos` section of your `.pre-commit-config.yaml`:
 
 ```yaml
-  - repo: https://github.com/fluttercommunity/import_sorter
-    rev: "master"
-    hooks:
-      - id: dart-import-sorter  # use `flutter-import-sorter` for a Flutter project
+- repo: https://github.com/fluttercommunity/import_sorter
+  rev: 'master'
+  hooks:
+    - id: dart-import-sorter # use `flutter-import-sorter` for a Flutter project
 ```
 
-* Run initial sort:
+- Run initial sort:
 
 ```shell
 pre-commit run --all-files
@@ -136,8 +136,8 @@ pre-commit run --all-files
 All contributions are welcome! Just make sure that it's not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
 
+## 👥 Contributors
 
 - **[@Matt-Gleich](https://github.com/Matt-Gleich)**
 
