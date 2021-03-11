@@ -2,13 +2,13 @@
 import 'dart:io';
 
 // 📦 Package imports:
-import 'package:colorize/colorize.dart';
+import 'package:tint/tint.dart';
 
 /// Sort the imports
 /// Returns the sorted file as a string at
 /// index 0 and the number of sorted imports
 /// at index 1
-List sortImports(
+ImportSortData sortImports(
   List<String> lines,
   String package_name,
   List dependencies,
@@ -88,18 +88,14 @@ List sortImports(
     }
   }
 
-  // If no import return original string of lines
+  // If no imports return original string of lines
   if (noImports()) {
     if (lines.length > 1) {
       if (lines.last != '') {
-        return [
-          [...lines, ''].join('\n'),
-          0,
-          0
-        ];
+        return ImportSortData([...lines, ''].join('\n'), 0, 0);
       }
     }
-    return [lines.join('\n'), 0, 0];
+    return ImportSortData(lines.join('\n'), 0, 0);
   }
 
   // Remove spaces
@@ -169,26 +165,31 @@ List sortImports(
       projectImports.length;
   if (exitIfChanged && original != sortedFile) {
     stdout.write('\n┗━━🚨 ');
-    color(
-      'Please run import sorter!',
-      back: Styles.BOLD,
-      front: Styles.RED,
-      isBold: true,
-    );
+    stdout.write('Please run import sorter!'.bold().red());
     exit(1);
   }
   if (original == sortedFile) {
-    return [original, 0, numberOfImports];
+    return ImportSortData(original, 0, numberOfImports);
   }
 
-  return [
+  return ImportSortData(
     sortedFile,
     numberOfImports,
     numberOfImports,
-  ];
+  );
 }
 
 /// Get the number of times a string contains another
 /// string
 int _timesContained(String string, String looking) =>
     string.split(looking).length - 1;
+
+/// Data to return from a sort
+class ImportSortData {
+  final String sortedFile;
+  final int importsChanged;
+  final int numberOfImports;
+
+  const ImportSortData(
+      this.sortedFile, this.importsChanged, this.numberOfImports);
+}
