@@ -8,7 +8,7 @@ import 'package:tint/tint.dart';
 /// Returns the sorted file as a string at
 /// index 0 and the number of sorted imports
 /// at index 1
-List sortImports(
+ImportSortData sortImports(
   List<String> lines,
   String package_name,
   List dependencies,
@@ -92,14 +92,10 @@ List sortImports(
   if (noImports()) {
     if (lines.length > 1) {
       if (lines.last != '') {
-        return [
-          [...lines, ''].join('\n'),
-          0,
-          0
-        ];
+        return ImportSortData([...lines, ''].join('\n'), 0, 0);
       }
     }
-    return [lines.join('\n'), 0, 0];
+    return ImportSortData(lines.join('\n'), 0, 0);
   }
 
   // Remove spaces
@@ -173,17 +169,27 @@ List sortImports(
     exit(1);
   }
   if (original == sortedFile) {
-    return [original, 0, numberOfImports];
+    return ImportSortData(original, 0, numberOfImports);
   }
 
-  return [
+  return ImportSortData(
     sortedFile,
     numberOfImports,
     numberOfImports,
-  ];
+  );
 }
 
 /// Get the number of times a string contains another
 /// string
 int _timesContained(String string, String looking) =>
     string.split(looking).length - 1;
+
+/// Data to return from a sort
+class ImportSortData {
+  final String sortedFile;
+  final int importsChanged;
+  final int numberOfImports;
+
+  const ImportSortData(
+      this.sortedFile, this.importsChanged, this.numberOfImports);
+}

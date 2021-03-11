@@ -81,20 +81,24 @@ void main(List<String> args) {
 
   // Sorting and writing to files
   var filesFormatted = 0;
-  var totalImportsSorted = 0;
+  int totalImportsSorted = 0;
 
   for (final filePath in dartFiles.keys) {
-    final sortedFile = sort.sortImports(dartFiles[filePath].readAsLinesSync(),
-        packageName, dependencies, emojis, exitOnChange, noComments);
-    final importsSorted = sortedFile[1];
     final file = dartFiles[filePath];
+    if (file == null) {
+      continue;
+    }
+
+    final sortedFile = sort.sortImports(file.readAsLinesSync(), packageName,
+        dependencies, emojis, exitOnChange, noComments);
+    final importsSorted = sortedFile.importsChanged;
 
     filesFormatted++;
     totalImportsSorted += importsSorted;
 
-    dartFiles[filePath].writeAsStringSync(sortedFile[0]);
+    dartFiles[filePath]?.writeAsStringSync(sortedFile.sortedFile);
     stdout.write(
-        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ✅ Sorted ${sortedFile[1]} out of ${sortedFile[2]} imports in ${file.path.replaceFirst(currentPath, '')}/');
+        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ✅ Sorted ${sortedFile.importsChanged} out of ${sortedFile.numberOfImports} imports in ${file.path.replaceFirst(currentPath, '')}/');
     String filename = file.path.split(Platform.pathSeparator).last;
     filename = importsSorted == 0 ? filename.yellow() : filename.green();
     stdout.write(filename + "\n");
