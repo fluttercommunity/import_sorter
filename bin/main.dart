@@ -3,7 +3,7 @@ import 'dart:io';
 
 // 📦 Package imports:
 import 'package:args/args.dart';
-import 'package:colorize/colorize.dart';
+import 'package:tint/tint.dart';
 import 'package:yaml/yaml.dart';
 
 // 🌎 Project imports:
@@ -12,7 +12,7 @@ import 'package:import_sorter/files.dart' as files;
 import 'package:import_sorter/sort.dart' as sort;
 
 void main(List<String> args) {
-  // Setting arguments
+  // Parsing arguments
   final parser = ArgParser();
   parser.addFlag('emojis', abbr: 'e', negatable: false);
   parser.addFlag('ignore-config', negatable: false);
@@ -84,23 +84,20 @@ void main(List<String> args) {
   var totalImportsSorted = 0;
 
   for (final filePath in dartFiles.keys) {
-    final sortedFile = sort.sortImports(dartFiles[filePath], packageName,
-        dependencies, emojis, exitOnChange, noComments);
+    final sortedFile = sort.sortImports(dartFiles[filePath].readAsLinesSync(),
+        packageName, dependencies, emojis, exitOnChange, noComments);
     final importsSorted = sortedFile[1];
+    final file = dartFiles[filePath];
 
     filesFormatted++;
     totalImportsSorted += importsSorted;
 
-    File(filePath).writeAsStringSync(sortedFile[0]);
-    final dirChunks = filePath.replaceAll("$currentPath/", '').split('/');
+    dartFiles[filePath].writeAsStringSync(sortedFile[0]);
     stdout.write(
-        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ✅ Sorted ${sortedFile[1]} out of ${sortedFile[2]} imports in ${dirChunks.getRange(0, dirChunks.length - 1).join('/')}/');
-    color(
-      dirChunks.last,
-      back: Styles.BOLD,
-      front: importsSorted == 0 ? Styles.YELLOW : Styles.GREEN,
-      isBold: true,
-    );
+        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ✅ Sorted ${sortedFile[1]} out of ${sortedFile[2]} imports in ${file.path.replaceFirst(currentPath, '')}/');
+    String filename = file.path.split(Platform.pathSeparator).last;
+    filename = importsSorted == 0 ? filename.yellow() : filename.green();
+    stdout.write(filename + "\n");
   }
   stopwatch.stop();
   stdout.write(

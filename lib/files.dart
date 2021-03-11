@@ -2,8 +2,8 @@
 import 'dart:io';
 
 /// Get all the dart files for the project and the contents
-Map<String, List<String>> dartFiles(String currentPath, List<String> args) {
-  final dartFiles = <String, List<String>>{};
+Map<String, File> dartFiles(String currentPath, List<String> args) {
+  final dartFiles = <String, File>{};
   final allContents = [
     ..._readDir(currentPath, 'lib'),
     ..._readDir(currentPath, 'bin'),
@@ -14,19 +14,21 @@ Map<String, List<String>> dartFiles(String currentPath, List<String> args) {
 
   for (final fileOrDir in allContents) {
     if (fileOrDir is File && fileOrDir.path.endsWith('.dart')) {
-      dartFiles[fileOrDir.path] = fileOrDir.readAsLinesSync();
+      dartFiles[fileOrDir.path] = fileOrDir;
     }
   }
 
   // If there are only certain files given via args filter the others out
   var onlyCertainFiles = false;
   for (final arg in args) {
-    onlyCertainFiles = arg.endsWith("dart");
+    if (!onlyCertainFiles) {
+      onlyCertainFiles = arg.endsWith("dart");
+    }
   }
 
   if (onlyCertainFiles) {
     final patterns = args.where((arg) => !arg.startsWith("-"));
-    final filesToRemove = [];
+    final filesToKeep = <String, File>{};
 
     for (final fileName in dartFiles.keys) {
       var keep = false;
@@ -36,12 +38,11 @@ Map<String, List<String>> dartFiles(String currentPath, List<String> args) {
           break;
         }
       }
-      if (!keep) {
-        filesToRemove.add(fileName);
+      if (keep) {
+        filesToKeep[fileName] = File(fileName);
       }
     }
-
-    filesToRemove.forEach((file) => dartFiles.remove(file));
+    return filesToKeep;
   }
 
   return dartFiles;
