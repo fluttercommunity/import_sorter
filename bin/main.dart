@@ -67,7 +67,7 @@ void main(List<String> args) {
 
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles(currentPath, args);
-  if (dependencies.contains('flutter') &&
+  if (dependencies.contains('flutter/') &&
       dartFiles
           .containsKey('${currentPath}/lib/generated_plugin_registrant.dart')) {
     dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
