@@ -1,3 +1,7 @@
+## 4.4.3
+
+- Fix packages that are prefixed with `flutter` ([#34])(https://github.com/fluttercommunity/import_sorter/issues/34)
+
 ## 4.4.2
 
 - Add null-safety support ([#49](https://github.com/fluttercommunity/import_sorter/issues/49))
