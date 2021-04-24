@@ -10,7 +10,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/physics.dart';
 
 // 📦 Package imports:
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/translations.dart';
 import 'package:intl/intl.dart';
 import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';

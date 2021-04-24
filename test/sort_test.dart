@@ -6,14 +6,6 @@ import 'package:import_sorter/sort.dart';
 
 void switcher(bool emojis, bool noComments) {
   const packageName = 'import_sorter_test';
-  const dependencies = [
-    'provider',
-    'mdi',
-    'intl',
-    'yaml',
-    'flutter',
-    'flutter_gen'
-  ];
 
   // Imports:
   const dartImports = '''
@@ -70,7 +62,6 @@ void main(List<String> args) async {
         sortImports(
           [],
           packageName,
-          dependencies,
           emojis,
           false,
           noComments,
@@ -86,7 +77,6 @@ void main(List<String> args) async {
         '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n'
             .split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -103,7 +93,6 @@ void main(List<String> args) async {
       final sortedImports = sortImports(
         sampleProgram.split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -117,7 +106,6 @@ void main(List<String> args) async {
       final sortedImports = sortImports(
         '$dartImports\n$sampleProgram'.split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -134,7 +122,6 @@ void main(List<String> args) async {
       final sortedImports = sortImports(
         '$flutterImports\n$sampleProgram'.split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -151,7 +138,6 @@ void main(List<String> args) async {
       final sortedImports = sortImports(
         '$packageImports\n$sampleProgram'.split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -168,7 +154,6 @@ void main(List<String> args) async {
       final sortedImports = sortImports(
         '$projectImports\n$sampleProgram'.split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -186,7 +171,6 @@ void main(List<String> args) async {
         '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
             .split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,
@@ -204,7 +188,6 @@ void main(List<String> args) async {
         'library import_sorter;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
             .split('\n'),
         packageName,
-        dependencies,
         emojis,
         false,
         noComments,

@@ -11,7 +11,6 @@ import 'package:tint/tint.dart';
 ImportSortData sortImports(
   List<String> lines,
   String package_name,
-  List dependencies,
   bool emojis,
   bool exitIfChanged,
   bool noComments,
@@ -60,14 +59,10 @@ ImportSortData sortImports(
         flutterImports.add(lines[i]);
       } else if (lines[i].contains('package:$package_name/')) {
         projectImports.add(lines[i]);
-      } else if (!lines[i].contains('package:')) {
+      } else if (lines[i].contains('package:')) {
+        packageImports.add(lines[i]);
+      } else {
         projectRelativeImports.add(lines[i]);
-      }
-      for (final dependency in dependencies) {
-        if (lines[i].contains('package:$dependency/') &&
-            dependency != 'flutter') {
-          packageImports.add(lines[i]);
-        }
       }
     } else if (i != lines.length - 1 &&
         (lines[i] == dartImportComment(false) ||

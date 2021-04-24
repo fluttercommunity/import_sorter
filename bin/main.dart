@@ -89,8 +89,8 @@ void main(List<String> args) {
       continue;
     }
 
-    final sortedFile = sort.sortImports(file.readAsLinesSync(), packageName,
-        dependencies, emojis, exitOnChange, noComments);
+    final sortedFile = sort.sortImports(
+        file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments);
     final importsSorted = sortedFile.importsChanged;
 
     filesFormatted++;
