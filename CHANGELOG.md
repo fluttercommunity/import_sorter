@@ -1,3 +1,8 @@
+## 4.5.0
+
+- No longer rely on pubspec.yaml for getting dependency imports ([#34])(https://github.com/fluttercommunity/import_sorter/issues/34)
+- Improve formatting
+
 ## 4.4.3
 
 - Fix packages that are prefixed with `flutter` ([#34])(https://github.com/fluttercommunity/import_sorter/issues/34)
