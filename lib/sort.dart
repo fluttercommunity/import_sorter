@@ -87,10 +87,10 @@ ImportSortData sortImports(
   if (noImports()) {
     if (lines.length > 1) {
       if (lines.last != '') {
-        return ImportSortData([...lines, ''].join('\n'), 0, 0);
+        return ImportSortData([...lines, ''].join('\n'), false);
       }
     }
-    return ImportSortData(lines.join('\n'), 0, 0);
+    return ImportSortData(lines.join('\n'), false);
   }
 
   // Remove spaces
@@ -154,24 +154,16 @@ ImportSortData sortImports(
 
   final sortedFile = sortedLines.join('\n');
   final original = lines.join('\n') + '\n';
-  final numberOfImports = dartImports.length +
-      flutterImports.length +
-      packageImports.length +
-      projectImports.length;
   if (exitIfChanged && original != sortedFile) {
     stdout.write('\n┗━━🚨 ');
     stdout.write('Please run import sorter!'.bold().red());
     exit(1);
   }
   if (original == sortedFile) {
-    return ImportSortData(original, 0, numberOfImports);
+    return ImportSortData(original, false);
   }
 
-  return ImportSortData(
-    sortedFile,
-    numberOfImports,
-    numberOfImports,
-  );
+  return ImportSortData(sortedFile, true);
 }
 
 /// Get the number of times a string contains another
@@ -182,9 +174,7 @@ int _timesContained(String string, String looking) =>
 /// Data to return from a sort
 class ImportSortData {
   final String sortedFile;
-  final int importsChanged;
-  final int numberOfImports;
+  final bool updated;
 
-  const ImportSortData(
-      this.sortedFile, this.importsChanged, this.numberOfImports);
+  const ImportSortData(this.sortedFile, this.updated);
 }

@@ -77,11 +77,11 @@ void main(List<String> args) {
         RegExp(pattern).hasMatch(key.replaceFirst(currentPath, '')));
   }
 
-  stdout.write('\n┏━━🗂  Sorting ${dartFiles.length} dart files\n┃  ┃');
+  stdout.write('┏━━ Sorting ${dartFiles.length} dart files');
 
   // Sorting and writing to files
   var filesFormatted = 0;
-  int totalImportsSorted = 0;
+  final success = '✔'.green();
 
   for (final filePath in dartFiles.keys) {
     final file = dartFiles[filePath];
@@ -91,20 +91,16 @@ void main(List<String> args) {
 
     final sortedFile = sort.sortImports(
         file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments);
-    final importsSorted = sortedFile.importsChanged;
-
     filesFormatted++;
-    totalImportsSorted += importsSorted;
 
     dartFiles[filePath]?.writeAsStringSync(sortedFile.sortedFile);
     stdout.write(
-        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ✅ Sorted ${sortedFile.importsChanged} out of ${sortedFile.numberOfImports} imports in ${file.path.replaceFirst(currentPath, '')}/');
+        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ${success} Sorted imports for ${file.path.replaceFirst(currentPath, '')}/');
     String filename = file.path.split(Platform.pathSeparator).last;
-    filename = importsSorted == 0 ? filename.yellow() : filename.green();
+    filename = sortedFile.updated ? filename.green() : filename.yellow();
     stdout.write(filename + "\n");
   }
   stopwatch.stop();
   stdout.write(
-      '┃\n┗━━🙌 Sorted $totalImportsSorted imports in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
-  stdout.write('\n');
+      '┗━━ ${success} Sorted $filesFormatted files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
 }
