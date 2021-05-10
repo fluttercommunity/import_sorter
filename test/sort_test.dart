@@ -43,8 +43,7 @@ void main(List<String> args) async {
   */
   final pubspecYamlFile = File('\${currentPath}/pubspec.yaml');
   final pubspecYaml = loadYaml(pubspecYamlFile.readAsStringSync());
-}
-''';
+}''';
 
   final dartImportComment =
       noComments ? '' : '// ${emojis ? '🎯 ' : ''}Dart imports:\n';
@@ -66,23 +65,37 @@ void main(List<String> args) async {
           false,
           noComments,
         ).sortedFile,
-        '',
+        '\n',
+      );
+    },
+  );
+  test(
+    'Single code line',
+    () {
+      expect(
+        sortImports(
+          ['enum HomeEvent { showInfo, showDiscover, showProfile }', ''],
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
+        'enum HomeEvent { showInfo, showDiscover, showProfile }\n\n',
       );
     },
   );
   test(
     'No code, only imports',
     () {
-      final sortedImports = sortImports(
-        '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n'
-            .split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n'
+              .split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n',
       );
     },
@@ -90,28 +103,28 @@ void main(List<String> args) async {
   test(
     'No imports',
     () {
-      final sortedImports = sortImports(
-        sampleProgram.split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
-      expect('${sortedImports.sortedFile}\n', '$sampleProgram\n');
+      expect(
+          sortImports(
+            sampleProgram.split('\n'),
+            packageName,
+            emojis,
+            false,
+            noComments,
+          ).sortedFile,
+          '$sampleProgram\n');
     },
   );
   test(
     'Dart Imports',
     () {
-      final sortedImports = sortImports(
-        '$dartImports\n$sampleProgram'.split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          '$dartImports\n$sampleProgram'.split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         '$dartImportComment$dartImports\n$sampleProgram\n',
       );
     },
@@ -119,15 +132,14 @@ void main(List<String> args) async {
   test(
     'Flutter Imports',
     () {
-      final sortedImports = sortImports(
-        '$flutterImports\n$sampleProgram'.split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          '$flutterImports\n$sampleProgram'.split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         '$flutterImportComment$flutterImports\n$sampleProgram\n',
       );
     },
@@ -135,15 +147,14 @@ void main(List<String> args) async {
   test(
     'Package Imports',
     () {
-      final sortedImports = sortImports(
-        '$packageImports\n$sampleProgram'.split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          '$packageImports\n$sampleProgram'.split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         '$packageImportComment$packageImports\n$sampleProgram\n',
       );
     },
@@ -151,15 +162,14 @@ void main(List<String> args) async {
   test(
     'Project Imports',
     () {
-      final sortedImports = sortImports(
-        '$projectImports\n$sampleProgram'.split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          '$projectImports\n$sampleProgram'.split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         '$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
@@ -167,16 +177,15 @@ void main(List<String> args) async {
   test(
     'All Imports',
     () {
-      final sortedImports = sortImports(
-        '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
-            .split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+              .split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
@@ -184,16 +193,15 @@ void main(List<String> args) async {
   test(
     'Code before all imports',
     () {
-      final sortedImports = sortImports(
-        'library import_sorter;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
-            .split('\n'),
-        packageName,
-        emojis,
-        false,
-        noComments,
-      );
       expect(
-        sortedImports.sortedFile,
+        sortImports(
+          'library import_sorter;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+              .split('\n'),
+          packageName,
+          emojis,
+          false,
+          noComments,
+        ).sortedFile,
         'library import_sorter;\n\n$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },

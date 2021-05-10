@@ -85,12 +85,13 @@ ImportSortData sortImports(
 
   // If no imports return original string of lines
   if (noImports()) {
-    if (lines.length > 1) {
-      if (lines.last != '') {
-        return ImportSortData([...lines, ''].join('\n'), false);
-      }
+    var joinedLines = lines.join('\n');
+    if (joinedLines.endsWith('\n') && !joinedLines.endsWith('\n\n')) {
+      joinedLines += '\n';
+    } else if (!joinedLines.endsWith('\n')) {
+      joinedLines += '\n';
     }
-    return ImportSortData(lines.join('\n'), false);
+    return ImportSortData(joinedLines, false);
   }
 
   // Remove spaces
