@@ -64,6 +64,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '\n',
       );
@@ -79,6 +80,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         'enum HomeEvent { showInfo, showDiscover, showProfile }\n\n',
       );
@@ -95,6 +97,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n',
       );
@@ -110,6 +113,7 @@ void main(List<String> args) async {
             emojis,
             false,
             noComments,
+            [],
           ).sortedFile,
           '$sampleProgram\n');
     },
@@ -124,6 +128,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '$dartImportComment$dartImports\n$sampleProgram\n',
       );
@@ -139,6 +144,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '$flutterImportComment$flutterImports\n$sampleProgram\n',
       );
@@ -154,6 +160,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '$packageImportComment$packageImports\n$sampleProgram\n',
       );
@@ -169,6 +176,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '$projectImportComment$projectImports\n$sampleProgram\n',
       );
@@ -185,6 +193,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
@@ -201,6 +210,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
+          [],
         ).sortedFile,
         'library import_sorter;\n\n$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );

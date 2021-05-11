@@ -46,7 +46,9 @@ void main(List<String> args) {
 
   var emojis = false;
   var noComments = false;
+  var groupLocalPackages = false;
   final ignored_files = [];
+  final localPackages = [];
 
   // Reading from config in pubspec.yaml safely
   if (!argResults.contains('--ignore-config')) {
@@ -56,6 +58,20 @@ void main(List<String> args) {
       if (config.containsKey('comments')) noComments = !config['comments'];
       if (config.containsKey('ignored_files')) {
         ignored_files.addAll(config['ignored_files']);
+      }
+      if (config.containsKey('group_local_packages')) {
+        groupLocalPackages = config['group_local_packages'];
+      }
+    }
+  }
+
+  // Find packages which are locally imported
+  if (groupLocalPackages && pubspecYaml.containsKey('dependencies')) {
+    final dependencies = pubspecYaml['dependencies'];
+    for (var packageName in dependencies.keys) {
+      final package = dependencies[packageName];
+      if (package is YamlMap && package.containsKey('path')) {
+        localPackages.add(packageName);
       }
     }
   }
@@ -95,11 +111,12 @@ void main(List<String> args) {
       continue;
     }
 
-    final sortedFile = sort.sortImports(
-        file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments);
+    final sortedFile = sort.sortImports(file.readAsLinesSync(), packageName,
+        emojis, exitOnChange, noComments, localPackages.cast<String>());
     if (!sortedFile.updated) {
       continue;
     }
+
     dartFiles[filePath]?.writeAsStringSync(sortedFile.sortedFile);
     sortedFiles.add(filePath);
   }
