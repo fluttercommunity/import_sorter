@@ -91,6 +91,9 @@ void main(List<String> args) {
 
     final sortedFile = sort.sortImports(
         file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments);
+    if (!sortedFile.updated) {
+      continue;
+    }
     filesFormatted++;
 
     dartFiles[filePath]?.writeAsStringSync(sortedFile.sortedFile);
@@ -99,6 +102,9 @@ void main(List<String> args) {
     String filename = file.path.split(Platform.pathSeparator).last;
     filename = sortedFile.updated ? filename.green() : filename.yellow();
     stdout.write(filename + "\n");
+  }
+  if (filesFormatted == 0) {
+    stdout.write("\n");
   }
   stopwatch.stop();
   stdout.write(
