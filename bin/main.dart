@@ -80,7 +80,7 @@ void main(List<String> args) {
   stdout.write('┏━━ Sorting ${dartFiles.length} dart files');
 
   // Sorting and writing to files
-  var filesFormatted = 0;
+  final sortedFiles = [];
   final success = '✔'.green();
 
   for (final filePath in dartFiles.keys) {
@@ -94,19 +94,28 @@ void main(List<String> args) {
     if (!sortedFile.updated) {
       continue;
     }
-    filesFormatted++;
-
     dartFiles[filePath]?.writeAsStringSync(sortedFile.sortedFile);
-    stdout.write(
-        '${filesFormatted == 1 ? '\n' : ''}┃  ${filesFormatted == dartFiles.keys.length ? '┗' : '┣'}━━ ${success} Sorted imports for ${file.path.replaceFirst(currentPath, '')}/');
-    String filename = file.path.split(Platform.pathSeparator).last;
-    filename = sortedFile.updated ? filename.green() : filename.yellow();
-    stdout.write(filename + "\n");
+    sortedFiles.add(filePath);
   }
-  if (filesFormatted == 0) {
+
+  stopwatch.stop();
+
+  // Outputting results
+  if (sortedFiles.length > 1) {
     stdout.write("\n");
   }
-  stopwatch.stop();
+  for (int i = 0; i < sortedFiles.length; i++) {
+    final file = dartFiles[sortedFiles[i]];
+    stdout.write(
+        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ ${success} Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
+    String filename = file!.path.split(Platform.pathSeparator).last;
+    stdout.write(filename + "\n");
+  }
+
+
+  if (sortedFiles.length == 0) {
+    stdout.write("\n");
+  }
   stdout.write(
-      '┗━━ ${success} Sorted $filesFormatted files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
+      '┗━━ ${success} Sorted ${sortedFiles.length} files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
 }
