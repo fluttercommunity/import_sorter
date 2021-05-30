@@ -1,3 +1,8 @@
+## 4.6.0
+
+- Fix generated_plugin_registrant.dart not being ignored ([#52](https://github.com/fluttercommunity/import_sorter/pull/52))
+- Only print "Sorted Imports for ..." for the files that were changed ([#54](https://github.com/fluttercommunity/import_sorter/pull/54))
+
 ## 4.5.1
 
 - Fix problem with single line files ([#42](https://github.com/fluttercommunity/import_sorter/issues/42))

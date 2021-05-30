@@ -77,7 +77,7 @@ import 'anotherFile.dart';
 
 ## 🚀 Installing
 
-Simply add `import_sorter: ^4.5.1` to your `pubspec.yaml`'s `dev_dependencies`.
+Simply add `import_sorter: ^4.6.0` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
@@ -120,7 +120,7 @@ Using pre-commit hooks in your project:
 
 ```yaml
 - repo: https://github.com/fluttercommunity/import_sorter
-  rev: 'master'
+  rev: "master"
   hooks:
     - id: dart-import-sorter # use `flutter-import-sorter` for a Flutter project
 ```
@@ -136,8 +136,8 @@ pre-commit run --all-files
 All contributions are welcome! Just make sure that it's not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
 
+## 👥 Contributors
 
 - **[@Matt-Gleich](https://github.com/Matt-Gleich)**
 
