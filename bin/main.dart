@@ -67,11 +67,17 @@ void main(List<String> args) {
 
   // Getting all the dart files for the project
   final dartFiles = files.dartFiles(currentPath, args);
-  if (dependencies.contains('flutter/') &&
-      dartFiles
-          .containsKey('${currentPath}/lib/generated_plugin_registrant.dart')) {
+  final containsFlutter = dependencies.contains('flutter');
+  final containsRegistrant = dartFiles
+      .containsKey('${currentPath}/lib/generated_plugin_registrant.dart');
+
+  stdout.writeln('contains flutter: ${containsFlutter}');
+  stdout.writeln('contains registrant: ${containsRegistrant}');
+
+  if (containsFlutter && containsRegistrant) {
     dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
   }
+
   for (final pattern in ignored_files) {
     dartFiles.removeWhere((key, _) =>
         RegExp(pattern).hasMatch(key.replaceFirst(currentPath, '')));
@@ -111,7 +117,6 @@ void main(List<String> args) {
     String filename = file!.path.split(Platform.pathSeparator).last;
     stdout.write(filename + "\n");
   }
-
 
   if (sortedFiles.length == 0) {
     stdout.write("\n");

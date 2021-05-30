@@ -1,9 +1,6 @@
 // 🎯 Dart imports:
 import 'dart:io';
 
-// 📦 Package imports:
-import 'package:tint/tint.dart';
-
 /// Sort the imports
 /// Returns the sorted file as a string at
 /// index 0 and the number of sorted imports
@@ -13,8 +10,9 @@ ImportSortData sortImports(
   String package_name,
   bool emojis,
   bool exitIfChanged,
-  bool noComments,
-) {
+  bool noComments, {
+  String? filePath,
+}) {
   String dartImportComment(bool emojis) =>
       '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
   String flutterImportComment(bool emojis) =>
@@ -156,8 +154,10 @@ ImportSortData sortImports(
   final sortedFile = sortedLines.join('\n');
   final original = lines.join('\n') + '\n';
   if (exitIfChanged && original != sortedFile) {
-    stdout.write('\n┗━━🚨 ');
-    stdout.write('Please run import sorter!'.bold().red());
+    if (filePath != null) {
+      stdout.writeln(
+          '\n┗━━🚨 File ${filePath} does not have its imports sorted.');
+    }
     exit(1);
   }
   if (original == sortedFile) {
