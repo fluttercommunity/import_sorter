@@ -118,7 +118,6 @@ void main(List<String> args) {
     stdout.write(filename + "\n");
   }
 
-
   if (sortedFiles.length == 0) {
     stdout.write("\n");
   }
