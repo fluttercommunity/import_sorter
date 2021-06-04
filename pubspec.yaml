@@ -3,7 +3,7 @@ description: Automatically organize your dart imports
 version: 4.6.0
 repository: "https://github.com/fluttercommunity/import_sorter"
 homepage: "https://mattglei.ch"
-maintainer: Matthew Gleich (@Matt-Gleich)
+maintainer: Matthew Gleich (@gleich)
 authors:
   - Matthew Gleich <email@mattglei.ch>
   - Flutter Community <community@flutter.zone>

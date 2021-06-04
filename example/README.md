@@ -39,6 +39,6 @@ import 'anotherFile.dart';
 import 'package:example_app/anotherFile2.dart';
 ```
 
-# [Example Application](https://github.com/Matt-Gleich/import_sorter/tree/master/example/example_app)
+# [Example Application](https://github.com/fluttercommunity/import_sorter/tree/master/example/example_app)
 
 Example flutter app using `import_sorter`

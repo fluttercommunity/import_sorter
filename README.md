@@ -1,4 +1,4 @@
-<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "lig", "bartekpacia", "ImgBotApp", "jlnrrg", "vHanda"]:end -->
+<!-- DO NOT REMOVE - contributor_list:data:start:["gleich", "lig", "bartekpacia", "ImgBotApp", "jlnrrg", "vHanda"]:end -->
 
 ```txt
  ___  _____ ______   ________  ________  ________  _________
@@ -139,7 +139,7 @@ All contributions are welcome! Just make sure that it's not an already existing 
 
 ## 👥 Contributors
 
-- **[@Matt-Gleich](https://github.com/Matt-Gleich)**
+- **[@gleich](https://github.com/gleich)**
 
 - **[@lig](https://github.com/lig)**
 
