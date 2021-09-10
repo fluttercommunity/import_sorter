@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 // 🌎 Project imports:
 import 'package:import_sorter/sort.dart';
 
-void switcher(bool emojis, bool noComments) {
+void switcher(bool emojis, bool noComments, List<String> localPackages) {
   const packageName = 'import_sorter_test';
 
   // Imports:
@@ -24,6 +24,10 @@ import 'package:flutter_gen/gen_l10n/translations.dart';
 import 'package:intl/intl.dart';
 import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
+''';
+  const localImports = '''
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 ''';
   const projectImports = '''
 import 'package:import_sorter_test/anotherFile2.dart';
@@ -49,10 +53,15 @@ void main(List<String> args) async {
       noComments ? '' : '// ${emojis ? '🎯 ' : ''}Dart imports:\n';
   final flutterImportComment =
       noComments ? '' : '// ${emojis ? '🐦 ' : ''}Flutter imports:\n';
+  final localPackageImportComment = (noComments || localPackages.isEmpty)
+      ? ''
+      : '//${emojis ? ' 🏠 ' : ' '}Local package imports:\n';
   final packageImportComment =
       noComments ? '' : '// ${emojis ? '📦 ' : ''}Package imports:\n';
   final projectImportComment =
       noComments ? '' : '// ${emojis ? '🌎 ' : ''}Project imports:\n';
+
+  final localPackageImportSplit = localPackages.isEmpty ? '' : '\n';
 
   test(
     'No imports and no code',
@@ -64,7 +73,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
         '\n',
       );
@@ -80,7 +89,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
         'enum HomeEvent { showInfo, showDiscover, showProfile }\n\n',
       );
@@ -91,15 +100,15 @@ void main(List<String> args) async {
     () {
       expect(
         sortImports(
-          '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n'
+          '$projectImports\n$localImports\n$packageImports\n$dartImports\n$flutterImports\n'
               .split('\n'),
           packageName,
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
-        '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n',
+        '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports$localPackageImportSplit$localPackageImportComment$localImports\n$projectImportComment$projectImports\n',
       );
     },
   );
@@ -113,7 +122,7 @@ void main(List<String> args) async {
             emojis,
             false,
             noComments,
-            [],
+            localPackages,
           ).sortedFile,
           '$sampleProgram\n');
     },
@@ -128,7 +137,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
         '$dartImportComment$dartImports\n$sampleProgram\n',
       );
@@ -144,7 +153,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
         '$flutterImportComment$flutterImports\n$sampleProgram\n',
       );
@@ -160,7 +169,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
         '$packageImportComment$packageImports\n$sampleProgram\n',
       );
@@ -176,7 +185,7 @@ void main(List<String> args) async {
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
         '$projectImportComment$projectImports\n$sampleProgram\n',
       );
@@ -187,15 +196,15 @@ void main(List<String> args) async {
     () {
       expect(
         sortImports(
-          '$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+          '$projectImports\n$localImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
               .split('\n'),
           packageName,
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
-        '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
+        '$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports$localPackageImportSplit$localPackageImportComment$localImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
   );
@@ -204,35 +213,43 @@ void main(List<String> args) async {
     () {
       expect(
         sortImports(
-          'library import_sorter;\n$projectImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
+          'library import_sorter;\n$projectImports\n$localImports\n$packageImports\n$dartImports\n$flutterImports\n$sampleProgram'
               .split('\n'),
           packageName,
           emojis,
           false,
           noComments,
-          [],
+          localPackages,
         ).sortedFile,
-        'library import_sorter;\n\n$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports\n$projectImportComment$projectImports\n$sampleProgram\n',
+        'library import_sorter;\n\n$dartImportComment$dartImports\n$flutterImportComment$flutterImports\n$packageImportComment$packageImports$localPackageImportSplit$localPackageImportComment$localImports\n$projectImportComment$projectImports\n$sampleProgram\n',
       );
     },
   );
 }
 
 void main() {
-  group(
-    'No Emojis and Comments',
-    () => switcher(false, false),
-  );
-  group(
-    'Emojis and Comments',
-    () => switcher(true, false),
-  );
-  group(
-    'No Emojis and No Comments',
-    () => switcher(false, true),
-  );
-  group(
-    'Emojis and No Comments',
-    () => switcher(true, true),
-  );
+  List<bool> onOff = [true, false];
+
+  for (var emoji in onOff) {
+    for (var comment in onOff) {
+      for (var localPackages in onOff) {
+        String msg = '${emoji ? '' : 'No '}Emojis, ${comment ? '' : 'No '}'
+            'Comments, ${localPackages ? '' : 'No '}Local Packages';
+
+        group(
+          msg,
+          () => switcher(
+            emoji,
+            comment,
+            localPackages
+                ? [
+                    'shared_preferences',
+                    'url_launcher',
+                  ]
+                : [],
+          ),
+        );
+      }
+    }
+  }
 }
