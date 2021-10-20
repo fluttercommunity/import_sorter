@@ -10,6 +10,7 @@ Map<String, File> dartFiles(String currentPath, List<String> args) {
     ..._readDir(currentPath, 'test'),
     ..._readDir(currentPath, 'tests'),
     ..._readDir(currentPath, 'test_driver'),
+    ..._readDir(currentPath, 'integration_test'),
   ];
 
   for (final fileOrDir in allContents) {
