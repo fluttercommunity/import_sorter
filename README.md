@@ -1,4 +1,4 @@
-<!-- DO NOT REMOVE - contributor_list:data:start:["gleich", "lig", "bartekpacia", "ImgBotApp", "jlnrrg", "vHanda"]:end -->
+<!-- DO NOT REMOVE - contributor_list:data:start:["gleich", "lig", "bartekpacia", "ImgBotApp", "jlnrrg", "vHanda", "lsaudon"]:end -->
 
 ```txt
  ___  _____ ______   ________  ________  ________  _________
@@ -136,8 +136,8 @@ pre-commit run --all-files
 All contributions are welcome! Just make sure that it's not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-
 ## 👥 Contributors
+
 
 - **[@gleich](https://github.com/gleich)**
 
@@ -150,5 +150,7 @@ All contributions are welcome! Just make sure that it's not an already existing 
 - **[@jlnrrg](https://github.com/jlnrrg)**
 
 - **[@vHanda](https://github.com/vHanda)**
+
+- **[@lsaudon](https://github.com/lsaudon)**
 
 <!-- DO NOT REMOVE - contributor_list:end -->
