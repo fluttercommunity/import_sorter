@@ -206,6 +206,46 @@ void main(List<String> args) async {
       );
     },
   );
+  test(
+      'Check if convertToRelativeImport returns relative import if importline in file is in same path',
+          () {
+        expect(
+            convertToRelativeImport(
+                'import \'package:test/widgets/dropdown.dart\'',
+                'test',
+                'widgets/label_dropdown.dart'
+            ),
+            'import \'dropdown.dart\''
+        );
+      }
+  );
+  test(
+      'Check if convertToRelativeImport returns relative path if imported file is in parents sibling folder',
+          () {
+        expect(
+            convertToRelativeImport(
+                "import 'package:test/widgets/dropdown.dart';",
+                'test',
+                'screens/screen_one.dart'
+            ),
+            " import '../widgets/dropdown.dart';"
+        );
+      }
+  );
+  test(
+      'Check if convertToRelativeImport returns relative import if imported file in file is in grandparent folder',
+          () {
+        expect(
+            convertToRelativeImport(
+                'import \'package:test/main.dart\';',
+                'test',
+                'widgets/config/config.dart'
+            ),
+            ' import \'../../main.dart\';'
+        );
+      }
+  );
+
 }
 
 void main() {
