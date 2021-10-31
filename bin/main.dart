@@ -94,9 +94,9 @@ void main(List<String> args) {
     if (file == null) {
       continue;
     }
-
+    final String libFolder = file.path.substring(file.path.indexOf('lib') + 4);
     final sortedFile = sort.sortImports(
-        file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments);
+        file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments,filePath: libFolder);
     if (!sortedFile.updated) {
       continue;
     }
