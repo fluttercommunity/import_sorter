@@ -1,6 +1,32 @@
 // 🎯 Dart imports:
 import 'dart:io';
 
+// Sorts the project imports to relative imports
+// Returns relative import line String
+String convertToRelativeImport(String line,String packageName,String path) {
+  List<String> fileBits = path.split(RegExp(r'[/\\]'));
+  List<String> importBits = line.split('/');
+  importBits.removeAt(0);
+  dynamic doubleDotAmount = 0;
+  int index;
+  for(index=0;index<fileBits.length-1;index++) {
+    if (fileBits[index] == importBits[index]) {
+      continue;
+    }
+    doubleDotAmount = fileBits.length - index -1;
+    break;
+  }
+  List<String> array = List.filled(doubleDotAmount, "..", growable: true);
+  for(int i =0;i < array.length;i++){
+    array.insertAll(array.length, importBits.sublist(index));
+    break;
+  }
+  if(doubleDotAmount == 0 ) {
+    return "import '${importBits.sublist(index).join('/')}";
+  }
+  return " import '${array.join('/')}";
+}
+
 /// Sort the imports
 /// Returns the sorted file as a string at
 /// index 0 and the number of sorted imports
@@ -56,8 +82,15 @@ ImportSortData sortImports(
       } else if (lines[i].contains('package:flutter/')) {
         flutterImports.add(lines[i]);
       } else if (lines[i].contains('package:$package_name/')) {
-        projectImports.add(lines[i]);
+        if(filePath != null) {
+          String import = convertToRelativeImport(lines[i], package_name,filePath);
+          projectImports.add(import);
+        }
+        else {
+         projectImports.add(lines[i]);
+        }
       } else if (lines[i].contains('package:')) {
+
         packageImports.add(lines[i]);
       } else {
         projectRelativeImports.add(lines[i]);
