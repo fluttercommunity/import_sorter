@@ -18,6 +18,10 @@
       \|_________|
 ```
 
+# Request for a Maintainer
+
+This project needs a maintainer as I no longer work with dart and flutter. Please see [the issue thread](https://github.com/fluttercommunity/import_sorter/issues/63) for more information.
+
 # [import_sorter](https://pub.dev/packages/import_sorter) ![Pub Version](https://img.shields.io/pub/v/import_sorter)
 
 [![Flutter Community: import_sorter](https://fluttercommunity.dev/_github/header/import_sorter)](https://github.com/fluttercommunity/community)
@@ -120,7 +124,7 @@ Using pre-commit hooks in your project:
 
 ```yaml
 - repo: https://github.com/fluttercommunity/import_sorter
-  rev: "master"
+  rev: 'master'
   hooks:
     - id: dart-import-sorter # use `flutter-import-sorter` for a Flutter project
 ```
@@ -136,8 +140,8 @@ pre-commit run --all-files
 All contributions are welcome! Just make sure that it's not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
 
+## 👥 Contributors
 
 - **[@gleich](https://github.com/gleich)**
 
