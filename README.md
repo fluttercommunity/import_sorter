@@ -108,6 +108,7 @@ import_sorter:
   comments: false # Optional, defaults to true
   ignored_files: # Optional, defaults to []
     - \/lib\/*
+  group_local_packages: false # Optional, default to false
 ```
 
 If you need another example check the [example app's import_sorter configuration](https://github.com/fluttercommunity/import_sorter/blob/master/example/example_app/pubspec.yaml#L76).
