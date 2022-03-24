@@ -1,3 +1,8 @@
+## 4.7.0
+
+- Scan in packages folder for multi-apps architecture
+- Update dependencies
+
 ## 4.6.0
 
 - Fix generated_plugin_registrant.dart not being ignored ([#52](https://github.com/fluttercommunity/import_sorter/pull/52))
