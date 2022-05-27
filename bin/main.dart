@@ -46,6 +46,7 @@ void main(List<String> args) {
 
   var emojis = false;
   var noComments = false;
+  String? header = null;
   final ignored_files = [];
 
   // Reading from config in pubspec.yaml safely
@@ -54,6 +55,7 @@ void main(List<String> args) {
       final config = pubspecYaml['import_sorter'];
       if (config.containsKey('emojis')) emojis = config['emojis'];
       if (config.containsKey('comments')) noComments = !config['comments'];
+      if (config.containsKey('header')) header = config['header'];
       if (config.containsKey('ignored_files')) {
         ignored_files.addAll(config['ignored_files']);
       }
@@ -96,7 +98,8 @@ void main(List<String> args) {
     }
 
     final sortedFile = sort.sortImports(
-        file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments);
+        file.readAsLinesSync(), packageName, emojis, exitOnChange, noComments,
+        header: header);
     if (!sortedFile.updated) {
       continue;
     }
