@@ -11,8 +11,10 @@ ImportSortData sortImports(
   bool emojis,
   bool exitIfChanged,
   bool noComments, {
+  String? header,
   String? filePath,
 }) {
+  String? headerComment = header != null ? '// $header' : null;
   String dartImportComment(bool emojis) =>
       '//${emojis ? ' 🎯 ' : ' '}Dart imports:';
   String flutterImportComment(bool emojis) =>
@@ -75,6 +77,9 @@ ImportSortData sortImports(
         lines[i + 1].startsWith('import ') &&
         lines[i + 1].endsWith(';')) {
     } else if (noImports()) {
+      if (headerComment != null && lines[i].contains(headerComment)) {
+        continue;
+      }
       beforeImportLines.add(lines[i]);
     } else {
       afterImportLines.add(lines[i]);
@@ -99,7 +104,9 @@ ImportSortData sortImports(
     }
   }
 
-  final sortedLines = <String>[...beforeImportLines];
+  final sortedLines = headerComment != null
+      ? <String>[headerComment, '', ...beforeImportLines]
+      : <String>[...beforeImportLines];
 
   // Adding content conditionally
   if (beforeImportLines.isNotEmpty) {

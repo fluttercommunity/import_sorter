@@ -106,6 +106,7 @@ If you use import_sorter a lot or need to ignore certain files you should look a
 import_sorter:
   emojis: true # Optional, defaults to false
   comments: false # Optional, defaults to true
+  header: 'Extra header above' # Optional, adds extra line above all imports.
   ignored_files: # Optional, defaults to []
     - \/lib\/*
 ```
