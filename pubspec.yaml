@@ -21,4 +21,3 @@ dev_dependencies:
 
 import_sorter:
   emojis: true
-  header: 'Super header!'
