@@ -156,7 +156,8 @@ ImportSortData sortImports(
   if (exitIfChanged && original != sortedFile) {
     if (filePath != null) {
       stdout.writeln(
-          '\n┗━━🚨 File ${filePath} does not have its imports sorted.');
+        '\n┗━━🚨 File $filePath does not have its imports sorted.',
+      );
     }
     exit(1);
   }

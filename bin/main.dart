@@ -30,7 +30,7 @@ void main(List<String> args) {
   Package name is one factor used to identify project imports
   Dependencies/dev_dependencies names are used to identify package imports
   */
-  final pubspecYamlFile = File('${currentPath}/pubspec.yaml');
+  final pubspecYamlFile = File('$currentPath/pubspec.yaml');
   final pubspecYaml = loadYaml(pubspecYamlFile.readAsStringSync());
 
   // Getting all dependencies and project package name
@@ -40,7 +40,7 @@ void main(List<String> args) {
   final stopwatch = Stopwatch();
   stopwatch.start();
 
-  final pubspecLockFile = File('${currentPath}/pubspec.lock');
+  final pubspecLockFile = File('$currentPath/pubspec.lock');
   final pubspecLock = loadYaml(pubspecLockFile.readAsStringSync());
   dependencies.addAll(pubspecLock['packages'].keys);
 
@@ -71,8 +71,8 @@ void main(List<String> args) {
   final containsRegistrant = dartFiles
       .containsKey('${currentPath}/lib/generated_plugin_registrant.dart');
 
-  stdout.writeln('contains flutter: ${containsFlutter}');
-  stdout.writeln('contains registrant: ${containsRegistrant}');
+  stdout.writeln('contains flutter: $containsFlutter');
+  stdout.writeln('contains registrant: $containsRegistrant');
 
   if (containsFlutter && containsRegistrant) {
     dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
@@ -113,7 +113,7 @@ void main(List<String> args) {
   for (int i = 0; i < sortedFiles.length; i++) {
     final file = dartFiles[sortedFiles[i]];
     stdout.write(
-        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ ${success} Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
+        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ $success Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
     String filename = file!.path.split(Platform.pathSeparator).last;
     stdout.write(filename + "\n");
   }
@@ -122,5 +122,5 @@ void main(List<String> args) {
     stdout.write("\n");
   }
   stdout.write(
-      '┗━━ ${success} Sorted ${sortedFiles.length} files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
+      '┗━━ $success Sorted ${sortedFiles.length} files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
 }
