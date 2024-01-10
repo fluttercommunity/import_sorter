@@ -26,5 +26,5 @@ jobs:
           sdk: stable
       - name: Run import_sorter
         run: |
-          pub get
-          pub run import_sorter:main --exit-if-changed
+          dart pub get
+          dart run import_sorter:main --exit-if-changed

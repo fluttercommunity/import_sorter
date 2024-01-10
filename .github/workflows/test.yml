@@ -16,6 +16,6 @@ jobs:
         with:
           sdk: stable
       - name: Install dependencies
-        run: pub get
+        run: dart pub get
       - name: Run tests
-        run: pub run test
+        run: dart run test
