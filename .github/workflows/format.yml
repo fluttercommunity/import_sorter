@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Run format
-        run: dartfmt --dry-run --set-exit-if-changed .
+        run: dart format --set-exit-if-changed .
 
   import_sorter:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
       image: google/dart:latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Run import_sorter
         run: |
           pub get

@@ -9,7 +9,7 @@ jobs:
   contributor_list:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - uses: cjdenio/contributor_list@master
         with:
           commit_message: 📝 Update contributors list
