@@ -17,11 +17,13 @@ jobs:
 
   import_sorter:
     runs-on: ubuntu-latest
-    container:
-      image: dart:stable
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
       - name: Run import_sorter
         run: |
           pub get

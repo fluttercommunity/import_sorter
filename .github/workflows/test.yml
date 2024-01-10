@@ -8,11 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    container:
-      image: dart:stable
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
       - name: Install dependencies
         run: pub get
       - name: Run tests
