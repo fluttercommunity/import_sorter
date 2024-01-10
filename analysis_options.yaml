@@ -1,0 +1,21 @@
+include: package:flutter_lints/flutter.yaml
+
+
+analyzer:
+  plugins:
+    - custom_lint
+  errors:
+    prefer_const_constructors: error
+    annotate_overrides: error
+    prefer_single_quotes: error
+    sort_pub_dependencies: error
+    invalid_annotation_target: ignore
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    sort_pub_dependencies: true
+    annotate_overrides: true
+    file_names: false
+    overridden_fields: false
+    prefer_double_quotes: false
