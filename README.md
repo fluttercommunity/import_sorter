@@ -20,7 +20,8 @@
 
 # Request for a Maintainer
 
-This project needs a maintainer as I no longer work with dart and flutter. Please see [the issue thread](https://github.com/fluttercommunity/import_sorter/issues/63) for more information.
+This project needs a maintainer as I no longer work with dart and flutter. Please
+see [the issue thread](https://github.com/fluttercommunity/import_sorter/issues/63) for more information.
 
 # [import_sorter](https://pub.dev/packages/import_sorter) ![Pub Version](https://img.shields.io/pub/v/import_sorter)
 
@@ -29,7 +30,8 @@ This project needs a maintainer as I no longer work with dart and flutter. Pleas
 ![test](https://github.com/fluttercommunity/import_sorter/workflows/test/badge.svg)
 ![format](https://github.com/fluttercommunity/import_sorter/workflows/format/badge.svg)
 
-🎯 Dart package to automatically organize your dart imports. Any dart project supported! Will sorts imports alphabetically and then group them in the following order:
+🎯 Dart package to automatically organize your dart imports. Any dart project supported!
+Will sort imports alphabetically and then group them in the following order:
 
 1. Dart imports
 2. Flutter imports
@@ -85,22 +87,29 @@ Simply add `import_sorter: ^4.6.0` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
-Once you've installed it simply run `flutter pub run import_sorter:main` (`pub run import_sorter:main` if normal dart application) to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't exist.
+Once you've installed it simply run `flutter pub run import_sorter:main` (`pub run import_sorter:main` if normal dart
+application) to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't
+exist.
 
 ## 💻 Command Line
 
 - Add the `-e` flag to the run command and have emojis added to your imports 😄.
 - If you're using a config in the `pubspec.yaml` you can have the program ignore it by adding `--ignore-config`.
-- Want to make sure your files are sorted? Add `--exit-if-changed` to make sure the files are sorted. Good for things like CI.
+- Want to make sure your files are sorted? Add `--exit-if-changed` to make sure the files are sorted. Good for things
+  like CI.
 - Have no comments before your imports by adding the `--no-comments` flag.
 - Add the `-h` flag if you need any help from the command line!
-- You can only run import_sorter on certain files by passing in a regular expression(s) that will only sort certain files. Below are two examples:
-  - `pub run import_sorter:main bin/main.dart lib/args.dart` (only sorts bin/main.dart and lib/args.dart)
-  - `pub run import_sorter:main lib\/* test\/*` (only sorts files in the lib and test folders)
+- You can only run import_sorter on certain files by passing in a regular expression(s) that will only sort certain
+  files. Below are two examples:
+    - `pub run import_sorter:main bin/main.dart lib/args.dart` (only sorts bin/main.dart and lib/args.dart)
+    - `pub run import_sorter:main lib\/* test\/*` (only sorts files in the lib and test folders)
 
 ## 🏗️ Config
 
-If you use import_sorter a lot or need to ignore certain files you should look at using the config you put in your `pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied to the project root path (the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the lib folder:
+If you use import_sorter a lot or need to ignore certain files, you should look at using the config you put in your
+`pubspec.yaml`. Ignored files are in the format of regex. This regex is then applied to the project root path
+(the one outputted to the terminal). Below is an example config setting emojis to true and ignoring all files in the
+lib folder:
 
 ```yaml
 import_sorter:
@@ -110,11 +119,14 @@ import_sorter:
     - \/lib\/*
 ```
 
-If you need another example check the [example app's import_sorter configuration](https://github.com/fluttercommunity/import_sorter/blob/master/example/example_app/pubspec.yaml#L76).
+If you need another example,
+check
+the [example app's import_sorter configuration](https://github.com/fluttercommunity/import_sorter/blob/master/example/example_app/pubspec.yaml#L76).
 
 ## 🚨 [`pre-commit`](https://pre-commit.com/) Hook
 
-There are two pre-commit hooks available: `dart-import-sorter` and `flutter-import-sorter`. They use `pub run` and `flutter pub run` respectively. Use the former for a generic Dart project and the latter for a Flutter project.
+There are two pre-commit hooks available: `dart-import-sorter` and `flutter-import-sorter`. They use `pub run` and
+`flutter pub run` respectively. Use the former for a generic Dart project and the latter for a Flutter project.
 
 Using pre-commit hooks in your project:
 
@@ -137,7 +149,7 @@ pre-commit run --all-files
 
 ## 🙋‍♀️🙋‍♂️ Contributing
 
-All contributions are welcome! Just make sure that it's not an already existing issue or pull request.
+All contributions are welcome! Make sure that it's not an already existing issue or pull request.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
 
