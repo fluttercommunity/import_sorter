@@ -18,7 +18,7 @@ jobs:
   import_sorter:
     runs-on: ubuntu-latest
     container:
-      image: google/dart:latest
+      image: dart:stable
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
