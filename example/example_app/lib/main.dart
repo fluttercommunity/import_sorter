@@ -1,23 +1,12 @@
 // 🎯 Dart imports:
-import 'dart:async';
-import 'dart:io';
-import 'dart:js';
 
 // 🐦 Flutter imports:
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/physics.dart';
 
 // 📦 Package imports:
 import 'package:flutter_gen/gen_l10n/translations.dart';
-import 'package:intl/intl.dart';
-import 'package:mdi/mdi.dart';
-import 'package:provider/provider.dart';
 
 // 🌎 Project imports:
-import 'package:example_app/anotherFile2.dart';
-import 'anotherFile.dart';
 
 void main() {
   runApp(MyApp());
@@ -121,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),

@@ -108,18 +108,18 @@ void main(List<String> args) {
 
   // Outputting results
   if (sortedFiles.length > 1) {
-    stdout.write("\n");
+    stdout.write('\n');
   }
   for (int i = 0; i < sortedFiles.length; i++) {
     final file = dartFiles[sortedFiles[i]];
     stdout.write(
         '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ ${success} Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
     String filename = file!.path.split(Platform.pathSeparator).last;
-    stdout.write(filename + "\n");
+    stdout.write(filename + '\n');
   }
 
   if (sortedFiles.length == 0) {
-    stdout.write("\n");
+    stdout.write('\n');
   }
   stdout.write(
       '┗━━ ${success} Sorted ${sortedFiles.length} files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
