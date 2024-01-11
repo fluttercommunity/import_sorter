@@ -5,7 +5,7 @@
 
 ## 4.5.1
 
-- Fix problem with single line files ([#42](https://github.com/fluttercommunity/import_sorter/issues/42))
+- Fixed problems with single line files ([#42](https://github.com/fluttercommunity/import_sorter/issues/42))
 
 ## 4.5.0
 
@@ -22,7 +22,7 @@
 
 ## 4.4.1
 
-- Fix return when there are 0 imports ([#37](https://github.com/fluttercommunity/import_sorter/issues/37))
+- Fix return when there are zero imports ([#37](https://github.com/fluttercommunity/import_sorter/issues/37))
 
 ## 4.4.0
 
@@ -65,7 +65,7 @@
 
 ## 3.0.6
 
-- Remove pub get feature. Was causing problems on linux ([#14](https://github.com/fluttercommunity/import_sorter/issues/14))
+- Remove pub get feature. It was causing problems on linux ([#14](https://github.com/fluttercommunity/import_sorter/issues/14))
 
 ## 3.0.5
 
@@ -90,15 +90,15 @@
 
 ## 3.0.0
 
-- Fix problem with imports in multiline strings.
-- Fix problem with code before imports.
+- Fix problems with imports in multiline strings.
+- Fix problems with code before imports.
 - Add GitHub issue templates.
 - Use args for arguments. This brings the addition of the `--help` flag.
-- Add some sick looking terminal with colors. File names are now in green so its easier to see.
+- Add some sick looking terminal with colors. File names are now in green so it's easier to see.
 
 ## 2.0.3
 
-- Fix problem when no `dev_dependencies are present`
+- Fix problems when no `dev_dependencies are present`
 
 ## 2.0.2
 
@@ -130,7 +130,7 @@
 
 ## 1.0.7
 
-- Fix duplicate imports when contain same package name
+- Fix duplicate imports when contain the same package name
 
 ## 1.0.6
 
@@ -148,7 +148,7 @@
 ## 1.0.3
 
 - Fix dev dependency problem
-- Add new line to end of file even if there are no imports
+- Add a new line to the end of the file even if there are no imports
 
 ## 1.0.2
 
