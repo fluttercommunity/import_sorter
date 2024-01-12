@@ -5,15 +5,17 @@ on:
   - pull_request
 
 jobs:
-  dartfmt:
+  format:
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
       - name: Run format
-        run: dart format --set-exit-if-changed .
+        run: dart format --set-exit-if-changed
 
   import_sorter:
     runs-on: ubuntu-latest
