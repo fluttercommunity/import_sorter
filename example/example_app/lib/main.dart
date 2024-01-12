@@ -1,7 +1,4 @@
 // 🎯 Dart imports:
-import 'dart:async';
-import 'dart:io';
-import 'dart:js';
 
 // 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
@@ -17,7 +14,6 @@ import 'package:provider/provider.dart';
 
 // 🌎 Project imports:
 import 'package:example_app/anotherFile2.dart';
-import 'anotherFile.dart';
 
 void main() {
   runApp(MyApp());
