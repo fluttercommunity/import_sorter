@@ -7,7 +7,7 @@ import 'dart:io';
 /// at index 1
 ImportSortData sortImports(
   List<String> lines,
-  String package_name,
+  String packageName,
   bool emojis,
   bool exitIfChanged,
   bool noComments, {
@@ -55,7 +55,7 @@ ImportSortData sortImports(
         dartImports.add(lines[i]);
       } else if (lines[i].contains('package:flutter/')) {
         flutterImports.add(lines[i]);
-      } else if (lines[i].contains('package:$package_name/')) {
+      } else if (lines[i].contains('package:$packageName/')) {
         projectImports.add(lines[i]);
       } else if (lines[i].contains('package:')) {
         packageImports.add(lines[i]);
@@ -152,11 +152,11 @@ ImportSortData sortImports(
   sortedLines.add('');
 
   final sortedFile = sortedLines.join('\n');
-  final original = lines.join('\n') + '\n';
+  final original = '${lines.join('\n')}\n';
   if (exitIfChanged && original != sortedFile) {
     if (filePath != null) {
-      stdout.writeln(
-          '\n┗━━🚨 File ${filePath} does not have its imports sorted.');
+      stdout
+          .writeln('\n┗━━🚨 File $filePath does not have its imports sorted.');
     }
     exit(1);
   }

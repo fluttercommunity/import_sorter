@@ -5,24 +5,31 @@ on:
   - pull_request
 
 jobs:
-  dartfmt:
+  format:
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          sdk: stable
+      - name: Run pub get
+        run: dart pub get
+        working-directory: ./example/example_app
       - name: Run format
-        run: dartfmt --dry-run --set-exit-if-changed .
+        run: dart format --set-exit-if-changed .
 
   import_sorter:
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
       - name: Run import_sorter
         run: |
-          pub get
-          pub run import_sorter:main --exit-if-changed
+          dart pub get
+          dart run import_sorter:main --exit-if-changed

@@ -23,12 +23,12 @@ Map<String, File> dartFiles(String currentPath, List<String> args) {
   var onlyCertainFiles = false;
   for (final arg in args) {
     if (!onlyCertainFiles) {
-      onlyCertainFiles = arg.endsWith("dart");
+      onlyCertainFiles = arg.endsWith('dart');
     }
   }
 
   if (onlyCertainFiles) {
-    final patterns = args.where((arg) => !arg.startsWith("-"));
+    final patterns = args.where((arg) => !arg.startsWith('-'));
     final filesToKeep = <String, File>{};
 
     for (final fileName in dartFiles.keys) {

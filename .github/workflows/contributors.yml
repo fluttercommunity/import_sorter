@@ -9,8 +9,10 @@ jobs:
   contributor_list:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: cjdenio/contributor_list@master
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Contributor List
+        uses: cjdenio/contributor_list@master
         with:
           commit_message: 📝 Update contributors list
           max_contributors: 10

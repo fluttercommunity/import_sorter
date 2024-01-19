@@ -30,7 +30,7 @@ void main(List<String> args) {
   Package name is one factor used to identify project imports
   Dependencies/dev_dependencies names are used to identify package imports
   */
-  final pubspecYamlFile = File('${currentPath}/pubspec.yaml');
+  final pubspecYamlFile = File('$currentPath/pubspec.yaml');
   final pubspecYaml = loadYaml(pubspecYamlFile.readAsStringSync());
 
   // Getting all dependencies and project package name
@@ -40,13 +40,13 @@ void main(List<String> args) {
   final stopwatch = Stopwatch();
   stopwatch.start();
 
-  final pubspecLockFile = File('${currentPath}/pubspec.lock');
+  final pubspecLockFile = File('$currentPath/pubspec.lock');
   final pubspecLock = loadYaml(pubspecLockFile.readAsStringSync());
   dependencies.addAll(pubspecLock['packages'].keys);
 
   var emojis = false;
   var noComments = false;
-  final ignored_files = [];
+  final ignoredFiles = [];
 
   // Reading from config in pubspec.yaml safely
   if (!argResults.contains('--ignore-config')) {
@@ -55,7 +55,7 @@ void main(List<String> args) {
       if (config.containsKey('emojis')) emojis = config['emojis'];
       if (config.containsKey('comments')) noComments = !config['comments'];
       if (config.containsKey('ignored_files')) {
-        ignored_files.addAll(config['ignored_files']);
+        ignoredFiles.addAll(config['ignored_files']);
       }
     }
   }
@@ -69,16 +69,16 @@ void main(List<String> args) {
   final dartFiles = files.dartFiles(currentPath, args);
   final containsFlutter = dependencies.contains('flutter');
   final containsRegistrant = dartFiles
-      .containsKey('${currentPath}/lib/generated_plugin_registrant.dart');
+      .containsKey('$currentPath/lib/generated_plugin_registrant.dart');
 
-  stdout.writeln('contains flutter: ${containsFlutter}');
-  stdout.writeln('contains registrant: ${containsRegistrant}');
+  stdout.writeln('contains flutter: $containsFlutter');
+  stdout.writeln('contains registrant: $containsRegistrant');
 
   if (containsFlutter && containsRegistrant) {
-    dartFiles.remove('${currentPath}/lib/generated_plugin_registrant.dart');
+    dartFiles.remove('$currentPath/lib/generated_plugin_registrant.dart');
   }
 
-  for (final pattern in ignored_files) {
+  for (final pattern in ignoredFiles) {
     dartFiles.removeWhere((key, _) =>
         RegExp(pattern).hasMatch(key.replaceFirst(currentPath, '')));
   }
@@ -108,19 +108,19 @@ void main(List<String> args) {
 
   // Outputting results
   if (sortedFiles.length > 1) {
-    stdout.write("\n");
+    stdout.write('\n');
   }
   for (int i = 0; i < sortedFiles.length; i++) {
     final file = dartFiles[sortedFiles[i]];
     stdout.write(
-        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ ${success} Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
+        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ $success Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
     String filename = file!.path.split(Platform.pathSeparator).last;
-    stdout.write(filename + "\n");
+    stdout.write('$filename\n');
   }
 
-  if (sortedFiles.length == 0) {
-    stdout.write("\n");
+  if (sortedFiles.isEmpty) {
+    stdout.write('\n');
   }
   stdout.write(
-      '┗━━ ${success} Sorted ${sortedFiles.length} files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
+      '┗━━ $success Sorted ${sortedFiles.length} files in ${stopwatch.elapsed.inSeconds}.${stopwatch.elapsedMilliseconds} seconds\n');
 }
