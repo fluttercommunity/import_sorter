@@ -20,9 +20,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/physics.dart';
 ''';
   const packageImports = '''
-import 'package:flutter_gen/gen_l10n/translations.dart';
 import 'package:intl/intl.dart';
-import 'package:mdi/mdi.dart';
 import 'package:provider/provider.dart';
 ''';
   const projectImports = '''

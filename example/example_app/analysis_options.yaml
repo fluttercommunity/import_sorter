@@ -1,0 +1,4 @@
+analyzer:
+  errors:
+    unused_import: ignore
+    unnecessary_import: ignore

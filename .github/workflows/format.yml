@@ -10,10 +10,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Setup Dart SDK
-        uses: dart-lang/setup-dart@v1
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
         with:
           sdk: stable
+      - name: Run pub get
+        run: dart pub get
+        working-directory: ./example/example_app
       - name: Run format
         run: dart format --set-exit-if-changed .
 
