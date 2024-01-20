@@ -85,7 +85,7 @@ Simply add `import_sorter: ^4.6.0` to your `pubspec.yaml`'s `dev_dependencies`.
 
 ## 🏃‍♂️ Running
 
-Once you've installed it simply run `flutter pub run import_sorter:main` (`pub run import_sorter:main` if normal dart application) to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't exist.
+Once you've installed it simply run `flutter pub run import_sorter` (`pub run import_sorter` if normal dart application) to format every file dart file in your lib, bin, test, and tests folder! Don't worry if these folders don't exist.
 
 ## 💻 Command Line
 
@@ -95,8 +95,8 @@ Once you've installed it simply run `flutter pub run import_sorter:main` (`pub r
 - Have no comments before your imports by adding the `--no-comments` flag.
 - Add the `-h` flag if you need any help from the command line!
 - You can only run import_sorter on certain files by passing in a regular expression(s) that will only sort certain files. Below are two examples:
-  - `pub run import_sorter:main bin/main.dart lib/args.dart` (only sorts bin/main.dart and lib/args.dart)
-  - `pub run import_sorter:main lib\/* test\/*` (only sorts files in the lib and test folders)
+  - `pub run import_sorter bin/main.dart lib/args.dart` (only sorts bin/main.dart and lib/args.dart)
+  - `pub run import_sorter lib\/* test\/*` (only sorts files in the lib and test folders)
 
 ## 🏗️ Config
 

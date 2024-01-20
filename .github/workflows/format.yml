@@ -32,4 +32,4 @@ jobs:
       - name: Run import_sorter
         run: |
           dart pub get
-          dart run import_sorter:main --exit-if-changed
+          dart run import_sorter --exit-if-changed
