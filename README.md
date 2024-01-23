@@ -1,4 +1,4 @@
-<!-- DO NOT REMOVE - contributor_list:data:start:["gleich", "lig", "bartekpacia", "pythonhubdev", "vkammerer", "ImgBotApp", "jlnrrg", "vHanda", "lsaudon"]:end -->
+<!-- DO NOT REMOVE - contributor_list:data:start:["gleich", "mrgnhnt96", "lig", "vkammerer", "bartekpacia", "pythonhubdev", "ImgBotApp", "jlnrrg", "vHanda"]:end -->
 
 ```txt
  ___  _____ ______   ________  ________  ________  _________
@@ -145,20 +145,20 @@ All contributions are welcome! Just make sure that it's not an already existing 
 
 - **[@gleich](https://github.com/gleich)**
 
+- **[@mrgnhnt96](https://github.com/mrgnhnt96)**
+
 - **[@lig](https://github.com/lig)**
+
+- **[@vkammerer](https://github.com/vkammerer)**
 
 - **[@bartekpacia](https://github.com/bartekpacia)**
 
 - **[@pythonhubdev](https://github.com/pythonhubdev)**
-
-- **[@vkammerer](https://github.com/vkammerer)**
 
 - **[@ImgBotApp](https://github.com/ImgBotApp)**
 
 - **[@jlnrrg](https://github.com/jlnrrg)**
 
 - **[@vHanda](https://github.com/vHanda)**
-
-- **[@lsaudon](https://github.com/lsaudon)**
 
 <!-- DO NOT REMOVE - contributor_list:end -->
