@@ -1,7 +1,10 @@
+// 🎯 Dart imports:
 import 'dart:io';
 
+// 📦 Package imports:
 import 'package:tint/tint.dart';
 
+// 🌎 Project imports:
 import './import_sorter.dart' as import_sorter;
 
 void main(List<String> args) {
