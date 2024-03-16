@@ -3,6 +3,7 @@ import 'dart:io';
 
 // 📦 Package imports:
 import 'package:args/args.dart';
+import 'package:path/path.dart' show relative;
 import 'package:tint/tint.dart';
 import 'package:yaml/yaml.dart';
 
@@ -46,7 +47,7 @@ void main(List<String> args) {
 
   var emojis = false;
   var noComments = false;
-  final ignoredFiles = [];
+  final ignoredFiles = <String>[];
 
   // Reading from config in pubspec.yaml safely
   if (!argResults.contains('--ignore-config')) {
@@ -79,14 +80,14 @@ void main(List<String> args) {
   }
 
   for (final pattern in ignoredFiles) {
-    dartFiles.removeWhere((key, _) =>
-        RegExp(pattern).hasMatch(key.replaceFirst(currentPath, '')));
+    dartFiles.removeWhere(
+        (key, _) => RegExp(pattern).hasMatch(relative(key, from: currentPath)));
   }
 
   stdout.write('┏━━ Sorting ${dartFiles.length} dart files');
 
   // Sorting and writing to files
-  final sortedFiles = [];
+  final sortedFiles = <String>[];
   final success = '✔'.green();
 
   for (final filePath in dartFiles.keys) {
@@ -111,11 +112,10 @@ void main(List<String> args) {
     stdout.write('\n');
   }
   for (int i = 0; i < sortedFiles.length; i++) {
-    final file = dartFiles[sortedFiles[i]];
+    final file = dartFiles[sortedFiles[i]]!;
     stdout.write(
-        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ $success Sorted imports for ${file?.path.replaceFirst(currentPath, '')}/');
-    String filename = file!.path.split(Platform.pathSeparator).last;
-    stdout.write('$filename\n');
+        '${sortedFiles.length == 1 ? '\n' : ''}┃  ${i == sortedFiles.length - 1 ? '┗' : '┣'}━━ '
+        '$success Sorted imports for ${relative(file.path, from: currentPath)}\n');
   }
 
   if (sortedFiles.isEmpty) {
